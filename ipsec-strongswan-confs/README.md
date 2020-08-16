@@ -34,12 +34,12 @@ Reference: [host2host-transport](https://www.strongswan.org/testing/testresults/
 
 ```bash
 alice# ipsec start
-bob# ipsec start
+  bob# ipsec start
 
 alice# ipsec up host-host
 
 # Capture the traffic on the host machine (outside Docker)
 
 alice# ipsec stop
-bob# ipsec stop
+  bob# ipsec stop
 ```

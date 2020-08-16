@@ -30,6 +30,5 @@ tc qdisc del dev eth0 root
 
 ```bash
 alice# iperf3 -s -d -p 8080
-bob# iperf3 -c 172.17.0.3 -p 8080 -i 1 -d -4 -n 4096000000
-
+  bob# iperf3 -c 172.17.0.3 -p 8080 -i 1 -d -4 -n 4096000000
 ```
