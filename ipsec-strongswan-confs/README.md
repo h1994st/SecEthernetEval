@@ -3,6 +3,8 @@ IPsec, strongSwan
 
 ## Key Preparation
 
+Reference: [Setting-up a Simple CA Using the strongSwan PKI Tool](https://wiki.strongswan.org/projects/strongswan/wiki/SimpleCA)
+
 ```bash
 pki --gen > caKey.der
 pki --self --in caKey.der --dn "C=CH, O=robustnet, CN=robustnet Root CA" --ca > caCert.der
