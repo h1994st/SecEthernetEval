@@ -1,7 +1,9 @@
 MACsec
 ===
 
-## Key Preparation
+## Manual Configurations
+
+### Key Preparation
 
 ```bash
 # Generate a 128-bit key
@@ -9,16 +11,14 @@ dd if=/dev/urandom count=16 bs=1 2>/dev/null | hexdump | cut -c 9- | tr -d ' \n'
 dd if=/dev/urandom count=16 bs=1 2>/dev/null | hexdump | cut -c 9- | tr -d ' \n' > bobKey128.txt
 ```
 
-## Configurations
-
 ### Alice
 
 Reference: [MACsec: a different solution to encrypt network traffic](https://developers.redhat.com/blog/2016/10/14/macsec-a-different-solution-to-encrypt-network-traffic/)
 
 ```bash
-export ALICE_MAC=02:42:ac:11:00:03
+export ALICE_MAC=02:42:ac:11:00:02
 export ALICE_KEY_128=`cat aliceKey128.txt`
-export BOB_MAC=02:42:ac:11:00:02
+export BOB_MAC=02:42:ac:11:00:03
 export BOB_KEY_128=`cat bobKey128.txt`
 
 ip link add link eth0 macsec0 type macsec encrypt on
@@ -39,9 +39,9 @@ ip macsec add macsec0 rx port 1 address $BOB_MAC \
 ### Bob
 
 ```bash
-export ALICE_MAC=02:42:ac:11:00:03
+export ALICE_MAC=02:42:ac:11:00:02
 export ALICE_KEY_128=`cat aliceKey128.txt`
-export BOB_MAC=02:42:ac:11:00:02
+export BOB_MAC=02:42:ac:11:00:03
 export BOB_KEY_128=`cat bobKey128.txt`
 
 ip link add link eth0 macsec0 type macsec encrypt on
@@ -59,21 +59,46 @@ ip macsec add macsec0 rx port 1 address 02:42:ac:11:00:03 \
                          key 00 $ALICE_KEY_128
 ```
 
-## Start!
+### Start!
 
 ```bash
 alice# ip link set macsec0 up
-alice# ip addr add 10.1.0.1/24 dev macsec0
+alice# ip addr add 10.1.0.2/24 dev macsec0
 
   bob# ip link set macsec0 up
-  bob# ip addr add 10.1.0.2/24 dev macsec0
+  bob# ip addr add 10.1.0.3/24 dev macsec0
 
 # Capture the traffic on the host machine (outside Docker)
 
 # Need to change the ip address
 alice# iperf3 -s -d -p 8080
-  bob# iperf3 -c 10.1.0.1 -p 8080 -i 1 -d -4 -n 4096000000
+  bob# iperf3 -c 10.1.0.2 -p 8080 -i 1 -d -4 -n 4096000000
 
 alice# ip link set macsec0 down
+alice# ip link delete macsec0
   bob# ip link set macsec0 down
+  bob# ip link delete macsec0
+```
+
+## `wpa_supplicant`
+
+Reference: [wpa_supplicant README](http://w1.fi/cgit/hostap/plain/wpa_supplicant/README)
+
+```bash
+wget http://w1.fi/releases/wpa_supplicant-2.9.tar.gz
+tar -xzf wpa_supplicant-2.9.tar.gz
+cd wpa_supplicant-2.9/wpa_supplicant
+# Move `wpa_supplicant_build_config` to the current directory
+# Rename it to `.config`
+cp /code/macsec-confs/wpa_supplicant_build_config .config
+make
+make install
+```
+
+### Start!
+
+```bash
+wpa_supplicant -i eth0 -Dmacsec_linux -c /code/macsec-confs/alice/wpa_supplicant.conf
+
+wpa_supplicant -i eth0 -Dmacsec_linux -c /code/macsec-confs/bob/wpa_supplicant.conf
 ```
