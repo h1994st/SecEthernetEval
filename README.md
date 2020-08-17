@@ -36,11 +36,20 @@ sudo apt install -y vim wget git autoconf libtool make apt-utils pkg-config \
 ### Control Bandwidth and Delay
 
 ```bash
+# 100 Mbit link
 tc qdisc add dev eth0 handle 1: root htb default 11
-tc class add dev eth0 parent 1: classid 1:1 htb rate 1000Mbps
+tc class add dev eth0 parent 1: classid 1:1 htb rate 100Mbit
 tc class add dev eth0 parent 1:1 classid 1:11 htb rate 100Mbit
+
+# 1 Gbit link
+tc qdisc add dev eth0 handle 1: root htb default 11
+tc class add dev eth0 parent 1: classid 1:1 htb rate 1Gbit
+tc class add dev eth0 parent 1:1 classid 1:11 htb rate 1Gbit
+
+# delay
 tc qdisc add dev eth0 parent 1:11 handle 10: netem delay 50ms
 
+# delete
 tc qdisc del dev eth0 root
 ```
 
@@ -48,5 +57,5 @@ tc qdisc del dev eth0 root
 
 ```bash
 alice# iperf3 -s -d -p 8080
-  bob# iperf3 -c 172.17.0.2 -p 8080 -i 1 -d -4 -n 4096000000
+  bob# iperf3 -c 172.17.0.2 -p 8080 -i 1 -d -4 --get-server-output -n 104857600
 ```

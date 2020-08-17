@@ -17,9 +17,9 @@ Reference: [MACsec: a different solution to encrypt network traffic](https://dev
 
 ```bash
 export ALICE_MAC=02:42:ac:11:00:02
-export ALICE_KEY_128=`cat aliceKey128.txt`
+export ALICE_KEY_128=`cat /code/macsec-confs/alice/aliceKey128.txt`
 export BOB_MAC=02:42:ac:11:00:03
-export BOB_KEY_128=`cat bobKey128.txt`
+export BOB_KEY_128=`cat /code/macsec-confs/bob/bobKey128.txt`
 
 ip link add link eth0 macsec0 type macsec encrypt on
 ip macsec add macsec0 rx port 1 address $BOB_MAC
@@ -40,9 +40,9 @@ ip macsec add macsec0 rx port 1 address $BOB_MAC \
 
 ```bash
 export ALICE_MAC=02:42:ac:11:00:02
-export ALICE_KEY_128=`cat aliceKey128.txt`
+export ALICE_KEY_128=`cat /code/macsec-confs/alice/aliceKey128.txt`
 export BOB_MAC=02:42:ac:11:00:03
-export BOB_KEY_128=`cat bobKey128.txt`
+export BOB_KEY_128=`cat /code/macsec-confs/bob/bobKey128.txt`
 
 ip link add link eth0 macsec0 type macsec encrypt on
 ip macsec add macsec0 rx port 1 address $ALICE_MAC
@@ -54,7 +54,7 @@ ip macsec add macsec0 tx sa 0 pn 1 on key 01 $BOB_KEY_128
 # - SCI, including Alice's MAC address
 # - sa & OPTS
 # - KEY: alice's key, key id is "00"
-ip macsec add macsec0 rx port 1 address 02:42:ac:11:00:03 \
+ip macsec add macsec0 rx port 1 address $ALICE_MAC \
                          sa 0 pn 1 on \
                          key 00 $ALICE_KEY_128
 ```
@@ -72,7 +72,7 @@ alice# ip addr add 10.1.0.2/24 dev macsec0
 
 # Need to change the ip address
 alice# iperf3 -s -d -p 8080
-  bob# iperf3 -c 10.1.0.2 -p 8080 -i 1 -d -4 -n 4096000000
+  bob# iperf3 -c 10.1.0.2 -p 8080 -i 1 -d -4 --get-server-output -n 104857600
 
 alice# ip link set macsec0 down
 alice# ip link delete macsec0
