@@ -45,9 +45,13 @@ def process_tls13_ecc_handshake_pcap(pcap_filepath):
     return key_exchange_time, total_time, total_packet_size
 
 
-def main(data_dir):
-    pcap_path_pattern = os.path.join(data_dir, 'tls13_board_o1_ecc_handshake_*.pcap')
+def main(data_dir, o_level):
+    pcap_path_pattern = os.path.join(data_dir, 'tls13_board_o%d_ecc_handshake_*.pcap' % o_level)
     pcap_list = glob.glob(pcap_path_pattern)
+
+    if len(pcap_list) == 0:
+        print("No existing pcap files!")
+        return
 
     key_exchange_times = []
     total_times = []
@@ -67,7 +71,8 @@ def main(data_dir):
 
 
 if __name__ == '__main__':
-    if len(sys.argv) < 2:
+    if len(sys.argv) < 3:
         sys.exit(1)
     data_dir = sys.argv[1]
-    main(data_dir)
+    o_level = int(sys.argv[2])
+    main(data_dir, o_level)
