@@ -27,4 +27,37 @@
 THREAD_RETURN WOLFSSL_THREAD client_test(void* args);
 
 
+static void tcp_connect_v2(SOCKET_T* sockfd, const char* ip, word16 port,
+                                     int udp, int sctp, WOLFSSL* ssl)
+{
+    SOCKADDR_IN_T addr, local_addr;
+    build_addr(&addr, ip, port, udp, sctp);
+    build_addr(&local_addr, "192.168.1.100", 0, udp, sctp);
+    if (udp) {
+        wolfSSL_dtls_set_peer(ssl, &addr, sizeof(addr));
+    }
+    tcp_socket(sockfd, udp, sctp);
+    if (bind(*sockfd, (const struct sockaddr*)&local_addr, sizeof(local_addr)) != 0) {
+        perror("tcp connect bind failed");
+        err_sys("tcp connect bind failed");
+    }
+
+    if (!udp) {
+        if (connect(*sockfd, (const struct sockaddr*)&addr, sizeof(addr)) != 0)
+            err_sys("tcp connect failed");
+    }
+}
+
+//typedef struct ProtocolVersion {
+//    byte major;
+//    byte minor;
+//} WOLFSSL_PACK ProtocolVersion;
+//
+//struct WOLFSSL_METHOD {
+//    ProtocolVersion version;
+//    byte            side;         /* connection side, server or client */
+//    byte            downgrade;    /* whether to downgrade version, default no */
+//};
+#include "internal.h"
+
 #endif /* WOLFSSL_CLIENT_H */
