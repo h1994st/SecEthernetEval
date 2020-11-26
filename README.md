@@ -4,16 +4,18 @@
 - Bob: 172.17.0.3
 
 ```bash
+docker pull h1994st/sec_eval
+
 docker run -it -d --name=alice --hostname=alice \
            --network=bridge \
            --volume /var/run/dbus:/var/run/dbus \
            --volume `pwd`:/code \
-           --privileged ubuntu:18.04
+           --privileged h1994st/sec_eval
 docker run -it -d --name=bob --hostname=bob \
            --network=bridge \
            --volume /var/run/dbus:/var/run/dbus \
            --volume `pwd`:/code \
-           --privileged ubuntu:18.04
+           --privileged h1994st/sec_eval
 
 docker exec -it alice /bin/bash
 docker exec -it bob /bin/bash
