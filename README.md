@@ -1,7 +1,7 @@
 ## Docker Configurations
 
-- Alice: 172.17.0.2
-- Bob: 172.17.0.3
+- Alice: 172.50.1.2
+- Bob: 172.50.1.3
 
 ```bash
 docker pull h1994st/sec_eval
@@ -59,5 +59,5 @@ tc qdisc del dev eth0 root
 
 ```bash
 alice# iperf3 -s -d -p 8080
-  bob# iperf3 -c 172.17.0.2 -p 8080 -i 1 -d -4 --get-server-output -n 104857600
+  bob# iperf3 -c 172.50.1.2 -p 8080 -i 1 -d -4 --get-server-output -n 104857600
 ```
