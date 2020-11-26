@@ -31,7 +31,7 @@ services:
     volumes:
       - .:/code
       - /var/run/dbus:/var/run/dbus
-    cpuset: '0'
+    cpuset: '1'
     cpus: '0.01'
     mem_limit: '50MB'
     mac_address: 02:42:ac:11:00:03
