@@ -17,6 +17,7 @@ services:
     cpuset: '0'
     cpus: '0.01'
     mem_limit: '50MB'
+    mac_address: 02:42:ac:11:00:02
   bob:
     hostname: bob
     image: h1994st/sec_eval
@@ -33,6 +34,7 @@ services:
     cpuset: '0'
     cpus: '0.01'
     mem_limit: '50MB'
+    mac_address: 02:42:ac:11:00:03
 
 networks:
   testnet:
