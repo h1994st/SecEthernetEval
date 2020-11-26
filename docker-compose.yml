@@ -1,7 +1,8 @@
-version: '3'
+version: '2.4'
 
 services:
   alice:
+    hostname: alice
     image: h1994st/sec_eval
     privileged: true
     tty: true
@@ -13,7 +14,11 @@ services:
     volumes:
       - .:/code
       - /var/run/dbus:/var/run/dbus
+    cpuset: '0'
+    cpus: '0.01'
+    mem_limit: '50MB'
   bob:
+    hostname: bob
     image: h1994st/sec_eval
     privileged: true
     tty: true
@@ -25,6 +30,9 @@ services:
     volumes:
       - .:/code
       - /var/run/dbus:/var/run/dbus
+    cpuset: '0'
+    cpus: '0.01'
+    mem_limit: '50MB'
 
 networks:
   testnet:
