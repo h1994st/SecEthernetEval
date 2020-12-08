@@ -1,3 +1,5 @@
+# VS Code
+.vscode/
 
 # Created by https://www.toptal.com/developers/gitignore/api/clion+all,linux,macos,windows,sublimetext
 # Edit at https://www.toptal.com/developers/gitignore?templates=clion+all,linux,macos,windows,sublimetext
@@ -193,4 +195,3 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/clion+all,linux,macos,windows,sublimetext
-

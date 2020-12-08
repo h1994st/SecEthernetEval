@@ -1,5 +1,4 @@
-IPsec, strongSwan
-===
+# IPsec, strongSwan
 
 ## Key Preparation
 
@@ -85,7 +84,7 @@ cp /code/ipsec-strongswan-confs/bob/ipsec.secrets /etc
 cp /code/ipsec-strongswan-confs/bob/strongswan.conf /etc
 ```
 
-## Start!
+## Start
 
 ```bash
 alice# ipsec start

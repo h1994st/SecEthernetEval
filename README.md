@@ -1,11 +1,25 @@
+# Secure Ethernet Performance Evaluation
+
 ## Docker Configurations
 
 - Alice: 172.50.1.2
 - Bob: 172.50.1.3
 
+### Docker compose
+
 ```bash
 docker pull h1994st/sec_eval
+docker-compose up -d
 
+docker-compose exec alice /code/scripts/config.sh
+docker-compose exec bob /code/scripts/config.sh
+
+docker-compose down
+```
+
+### Docker
+
+```bash
 docker run -it -d --name=alice --hostname=alice \
            --network=bridge \
            --volume /var/run/dbus:/var/run/dbus \
