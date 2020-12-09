@@ -1,6 +1,7 @@
 # 2020.12.08
 
-Data size: 100 MB
+- Data size: 100 MB
+- Link bit rate: 100 Mbps, 200 Mbps, ..., 1000 Mbps (1Gbps)
 
 ## TLS
 
