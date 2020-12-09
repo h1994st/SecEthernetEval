@@ -8,7 +8,7 @@
 ### Docker compose
 
 ```bash
-docker pull h1994st/sec_eval
+ln -s ./confs/<...>.yml docker-compose.yml  # select a configuration file
 docker-compose up -d
 
 docker-compose exec alice /code/scripts/config.sh
