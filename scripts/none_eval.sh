@@ -32,4 +32,13 @@ do
 
 done
 
+# 10 times
+for n in `seq 10` ;
+do
+
+    docker-compose exec bob /code/scripts/iperf3_start_client.sh \
+        $SERVER_IP_ADDR $DATA_SIZE $TOPIC "unlimited_"$(date +%s)
+
+done
+
 $SCRIPTS_DIR/host_stop.sh

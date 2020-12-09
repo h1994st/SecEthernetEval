@@ -15,8 +15,13 @@ def plot_throughput(throughput_avgs, throughput_stds, data_label=False):
     width = 0.25
 
     x = np.arange(100, 1001, 100)
+    if len(throughput_avgs[0]) == len(x) + 1:
+        x = list(x) + [-1]
     N = len(x)
     ind = np.arange(N)
+
+    y_max = max(throughput_avgs[0] + throughput_avgs[1] + throughput_avgs[2])
+    y_max += 100
 
     plt.figure(figsize=(13, 7))
     plt.rcParams.update({'font.size': 24})
@@ -53,7 +58,7 @@ def plot_throughput(throughput_avgs, throughput_stds, data_label=False):
     plt.xlabel('Link Bit Rate (Mbps)')
 
     plt.ylabel('Throughput (Mbps)')
-    plt.ylim(0, 500)
+    plt.ylim(0, y_max)
 
     plt.legend(loc='lower center', ncol=2, bbox_to_anchor=(0.5, 1))
     plt.grid(True, axis='y', linestyle='--')
@@ -61,6 +66,13 @@ def plot_throughput(throughput_avgs, throughput_stds, data_label=False):
     # plt.margins(x=0, y=0)
     plt.show()
     # plt.savefig('throughput_figure.png')
+
+
+def extract_throughput_from_json(result_path):
+    with open(result_path, 'r') as fp:
+        result_json = json.load(fp)
+    throughput = result_json['end']['sum_sent']['bits_per_second']
+    return throughput
 
 
 def process_result_json_files(data_dir_path, topic):
@@ -73,21 +85,46 @@ def process_result_json_files(data_dir_path, topic):
 
         throughputs = []
         for result_path in result_list:
-            with open(result_path, 'r') as fp:
-                result_json = json.load(fp)
-            throughput = result_json['end']['sum_sent']['bits_per_second']
+            throughput = extract_throughput_from_json(result_path)
             throughputs.append(throughput)
 
         # avg & std dev
         throughput_avgs.append(np.mean(throughputs) / 1000 / 1000)  # to Mbps
         throughput_stds.append(np.std(throughputs) / 1000 / 1000)  # to Mbps
 
+    # unlimited
+    result_path_pattern = os.path.join(
+        data_dir_path, '%s_client_unlimited_*.log' % (topic, bit_rate))
+    result_list = glob.glob(result_path_pattern)
+
+    throughputs = []
+    for result_path in result_list:
+        throughput = extract_throughput_from_json(result_path)
+        throughputs.append(throughput)
+
+    # avg & std dev
+    throughput_avgs.append(np.mean(throughputs) / 1000 / 1000)  # to Mbps
+    throughput_stds.append(np.std(throughputs) / 1000 / 1000)  # to Mbps
+
     return throughput_avgs, throughput_stds
+
+
+def extract_throughput_from_text(result_path):
+    with open(result_path, 'r') as fp:
+        for line in fp:
+            if line.find('sender') != -1:
+                end_pos = line.find('bits/sec')
+                start_pos = line.find('Bytes') + 5
+                throughput = int(line[start_pos:end_pos])
+                return throughput
+    return None
 
 
 def process_result_text_files(data_dir_path, topic):
     throughput_avgs = []
     throughput_stds = []
+
+    # 100 Mbps to 1000 Mbps
     for bit_rate in range(100, 1001, 100):
         result_path_pattern = os.path.join(
             data_dir_path, '%s_client_%dMbit_*.log' % (topic, bit_rate))
@@ -95,18 +132,31 @@ def process_result_text_files(data_dir_path, topic):
 
         throughputs = []
         for result_path in result_list:
-            with open(result_path, 'r') as fp:
-                for line in fp:
-                    if line.find('sender') != -1:
-                        end_pos = line.find('bits/sec')
-                        start_pos = line.find('MBytes') + 6
-                        throughput = int(line[start_pos:end_pos])
-                        break
+            throughput = extract_throughput_from_text(result_path)
             throughputs.append(throughput)
 
         # avg & std dev
         throughput_avgs.append(np.mean(throughputs) / 1000 / 1000)  # to Mbps
         throughput_stds.append(np.std(throughputs) / 1000 / 1000)  # to Mbps
+
+    # unlimited
+    result_path_pattern = os.path.join(
+        data_dir_path, '%s_client_unlimited_*.log' % (topic))
+    result_list = glob.glob(result_path_pattern)
+
+    throughputs = []
+    for result_path in result_list:
+        throughput = extract_throughput_from_text(result_path)
+
+        # !!! Temp: replace all numbers with 0, when the topic is 'none_eval'
+        if topic == 'none_eval':
+            throughput = 0
+
+        throughputs.append(throughput)
+
+    # avg & std dev
+    throughput_avgs.append(np.mean(throughputs) / 1000 / 1000)  # to Mbps
+    throughput_stds.append(np.std(throughputs) / 1000 / 1000)  # to Mbps
 
     return throughput_avgs, throughput_stds
 

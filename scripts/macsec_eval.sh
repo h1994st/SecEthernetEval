@@ -37,6 +37,15 @@ do
 
 done
 
+# 10 times
+for n in `seq 10` ;
+do
+
+    docker-compose exec bob /code/scripts/iperf3_start_client.sh \
+        $ALICE_IP_ADDR $DATA_SIZE $TOPIC "unlimited_"$(date +%s)
+
+done
+
 # Stop MACsec
 docker-compose exec alice /code/scripts/macsec_stop.sh
 docker-compose exec bob /code/scripts/macsec_stop.sh
