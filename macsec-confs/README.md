@@ -1,5 +1,4 @@
-MACsec
-===
+# MACsec
 
 ## Manual Configurations
 
@@ -59,7 +58,7 @@ ip macsec add macsec0 rx port 1 address $ALICE_MAC \
                          key 00 $ALICE_KEY_128
 ```
 
-### Start!
+### Start MACsec
 
 ```bash
 alice# ip link set macsec0 up
@@ -95,7 +94,7 @@ make
 make install
 ```
 
-### Start!
+### Start `wpa_supplicant`
 
 ```bash
 wpa_supplicant -i eth0 -Dmacsec_linux -c /code/macsec-confs/alice/wpa_supplicant.conf

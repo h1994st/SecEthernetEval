@@ -5,18 +5,16 @@ TOPIC="macsec_eval"
 
 $SCRIPTS_DIR/host_init.sh
 
-# Start IPsec
-docker-compose exec alice /code/scripts/ipsec_start.sh
-docker-compose exec bob /code/scripts/ipsec_start.sh
-
-# Activate IPsec communication
-docker-compose exec alice /code/scripts/ipsec_activate.sh
+# Start MACsec
+ALICE_IP_ADDR=10.1.0.2
+BOB_IP_ADDR=10.1.0.3
+docker-compose exec alice /code/scripts/macsec_start.sh $ALICE_IP_ADDR
+docker-compose exec bob /code/scripts/macsec_start.sh $BOB_IP_ADDR
 
 # Run iperf3
 docker-compose exec alice /code/scripts/iperf3_start_server.sh \
     $TOPIC "ipsec_all"
 DATA_SIZE=104857600  # 100 MB of data
-SERVER_IP_ADDR=172.50.1.2
 for bit_rate in `seq 100 100 1000` ;
 do
 
@@ -25,7 +23,7 @@ docker-compose exec alice /code/scripts/link_set_rate.sh $bit_rate"Mbit"
 docker-compose exec bob /code/scripts/link_set_rate.sh $bit_rate"Mbit"
 
 docker-compose exec bob /code/scripts/iperf3_start_client.sh \
-    $SERVER_IP_ADDR $DATA_SIZE $TOPIC $bit_rate"Mbit_"$(date +%s)
+    $ALICE_IP_ADDR $DATA_SIZE $TOPIC $bit_rate"Mbit_"$(date +%s)
 
 # Reset link
 docker-compose exec alice /code/scripts/link_reset.sh
@@ -33,8 +31,8 @@ docker-compose exec bob /code/scripts/link_reset.sh
 
 done
 
-# Stop IPsec
-docker-compose exec alice /code/scripts/ipsec_stop.sh
-docker-compose exec bob /code/scripts/ipsec_stop.sh
+# Stop MACsec
+docker-compose exec alice /code/scripts/macsec_stop.sh
+docker-compose exec bob /code/scripts/macsec_stop.sh
 
 $SCRIPTS_DIR/host_stop.sh
