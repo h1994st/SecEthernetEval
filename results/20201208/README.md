@@ -18,9 +18,7 @@
 - `./ipsec_1`
   - ESP Cipher: chacha20poly1305
 - `./ipsec_2`
-  - [TODO] ESP Cipher: chacha20poly1305-sha256
-- `./ipsec_3`
-  - [TODO] ESP Cipher: aes128gcm128-sha256
+  - ESP Cipher: aes128gcm128-sha256
 
 ## MACsec
 

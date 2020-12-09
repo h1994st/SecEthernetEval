@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SCRIPTS_DIR=$(dirname $(realpath $0))
-TOPIC="macsec_eval"
+TOPIC="ipsec_eval"
 
 $SCRIPTS_DIR/host_init.sh
 
