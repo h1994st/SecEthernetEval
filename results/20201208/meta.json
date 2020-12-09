@@ -1,4 +1,5 @@
 {
     "ipsec": "ipsec_2",
-    "macsec": "macsec_1"
+    "macsec": "macsec_1",
+    "none": "none_1"
 }

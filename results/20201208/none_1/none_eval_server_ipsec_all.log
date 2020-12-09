@@ -1,0 +1,940 @@
+{
+	"start":	{
+		"connected":	[{
+				"socket":	6,
+				"local_host":	"172.50.1.2",
+				"local_port":	8080,
+				"remote_host":	"172.50.1.3",
+				"remote_port":	34066
+			}],
+		"version":	"iperf 3.1.3",
+		"system_info":	"Linux alice 5.4.0-56-generic #62~18.04.1-Ubuntu SMP Tue Nov 24 10:07:50 UTC 2020 x86_64",
+		"timestamp":	{
+			"time":	"Wed, 09 Dec 2020 04:14:20 GMT",
+			"timesecs":	1607487260
+		},
+		"accepted_connection":	{
+			"host":	"172.50.1.3",
+			"port":	34064
+		},
+		"cookie":	"bob.1607487260.812363.267f9a61073fb7",
+		"tcp_mss_default":	1448,
+		"test_start":	{
+			"protocol":	"TCP",
+			"num_streams":	1,
+			"blksize":	131072,
+			"omit":	0,
+			"duration":	10,
+			"bytes":	104857600,
+			"blocks":	0,
+			"reverse":	0
+		}
+	},
+	"intervals":	[{
+			"streams":	[{
+					"socket":	6,
+					"start":	0,
+					"end":	8.851577,
+					"seconds":	8.851577,
+					"bytes":	104303784,
+					"bits_per_second":	94269110.506711,
+					"omitted":	false
+				}],
+			"sum":	{
+				"start":	0,
+				"end":	8.851577,
+				"seconds":	8.851577,
+				"bytes":	104303784,
+				"bits_per_second":	94269110.506711,
+				"omitted":	false
+			}
+		}],
+	"end":	{
+		"streams":	[{
+				"sender":	{
+					"socket":	6,
+					"start":	0,
+					"end":	8.851577,
+					"seconds":	8.851577,
+					"bytes":	0,
+					"bits_per_second":	0
+				},
+				"receiver":	{
+					"socket":	6,
+					"start":	0,
+					"end":	8.851577,
+					"seconds":	8.851577,
+					"bytes":	104303784,
+					"bits_per_second":	94269107.967558
+				}
+			}],
+		"sum_sent":	{
+			"start":	0,
+			"end":	8.851577,
+			"seconds":	8.851577,
+			"bytes":	0,
+			"bits_per_second":	0
+		},
+		"sum_received":	{
+			"start":	0,
+			"end":	8.851577,
+			"seconds":	8.851577,
+			"bytes":	104303784,
+			"bits_per_second":	94269107.967558
+		},
+		"cpu_utilization_percent":	{
+			"host_total":	0.432003,
+			"host_user":	0.025886,
+			"host_system":	0.406104,
+			"remote_total":	0,
+			"remote_user":	0,
+			"remote_system":	0
+		}
+	}
+}
+{
+	"start":	{
+		"connected":	[{
+				"socket":	6,
+				"local_host":	"172.50.1.2",
+				"local_port":	8080,
+				"remote_host":	"172.50.1.3",
+				"remote_port":	34076
+			}],
+		"version":	"iperf 3.1.3",
+		"system_info":	"Linux alice 5.4.0-56-generic #62~18.04.1-Ubuntu SMP Tue Nov 24 10:07:50 UTC 2020 x86_64",
+		"timestamp":	{
+			"time":	"Wed, 09 Dec 2020 04:14:39 GMT",
+			"timesecs":	1607487279
+		},
+		"accepted_connection":	{
+			"host":	"172.50.1.3",
+			"port":	34074
+		},
+		"cookie":	"bob.1607487279.112386.7694d6f0326aec",
+		"tcp_mss_default":	1448,
+		"test_start":	{
+			"protocol":	"TCP",
+			"num_streams":	1,
+			"blksize":	131072,
+			"omit":	0,
+			"duration":	10,
+			"bytes":	104857600,
+			"blocks":	0,
+			"reverse":	0
+		}
+	},
+	"intervals":	[{
+			"streams":	[{
+					"socket":	6,
+					"start":	0,
+					"end":	4.666412,
+					"seconds":	4.666412,
+					"bytes":	103915352,
+					"bits_per_second":	178150330.054391,
+					"omitted":	false
+				}],
+			"sum":	{
+				"start":	0,
+				"end":	4.666412,
+				"seconds":	4.666412,
+				"bytes":	103915352,
+				"bits_per_second":	178150330.054391,
+				"omitted":	false
+			}
+		}],
+	"end":	{
+		"streams":	[{
+				"sender":	{
+					"socket":	6,
+					"start":	0,
+					"end":	4.666412,
+					"seconds":	4.666412,
+					"bytes":	0,
+					"bits_per_second":	0
+				},
+				"receiver":	{
+					"socket":	6,
+					"start":	0,
+					"end":	4.666412,
+					"seconds":	4.666412,
+					"bytes":	103915352,
+					"bits_per_second":	178150330.054391
+				}
+			}],
+		"sum_sent":	{
+			"start":	0,
+			"end":	4.666412,
+			"seconds":	4.666412,
+			"bytes":	0,
+			"bits_per_second":	0
+		},
+		"sum_received":	{
+			"start":	0,
+			"end":	4.666412,
+			"seconds":	4.666412,
+			"bytes":	103915352,
+			"bits_per_second":	178150330.054391
+		},
+		"cpu_utilization_percent":	{
+			"host_total":	0.271984,
+			"host_user":	0.000007,
+			"host_system":	0.271977,
+			"remote_total":	0.266141,
+			"remote_user":	0,
+			"remote_system":	0.266141
+		}
+	}
+}
+{
+	"start":	{
+		"connected":	[{
+				"socket":	6,
+				"local_host":	"172.50.1.2",
+				"local_port":	8080,
+				"remote_host":	"172.50.1.3",
+				"remote_port":	34086
+			}],
+		"version":	"iperf 3.1.3",
+		"system_info":	"Linux alice 5.4.0-56-generic #62~18.04.1-Ubuntu SMP Tue Nov 24 10:07:50 UTC 2020 x86_64",
+		"timestamp":	{
+			"time":	"Wed, 09 Dec 2020 04:14:52 GMT",
+			"timesecs":	1607487292
+		},
+		"accepted_connection":	{
+			"host":	"172.50.1.3",
+			"port":	34084
+		},
+		"cookie":	"bob.1607487292.612316.6c251d5f7b863a",
+		"tcp_mss_default":	1448,
+		"test_start":	{
+			"protocol":	"TCP",
+			"num_streams":	1,
+			"blksize":	131072,
+			"omit":	0,
+			"duration":	10,
+			"bytes":	104857600,
+			"blocks":	0,
+			"reverse":	0
+		}
+	},
+	"intervals":	[{
+			"streams":	[{
+					"socket":	6,
+					"start":	0,
+					"end":	3.309813,
+					"seconds":	3.309813,
+					"bytes":	103246744,
+					"bits_per_second":	249553055.219955,
+					"omitted":	false
+				}],
+			"sum":	{
+				"start":	0,
+				"end":	3.309813,
+				"seconds":	3.309813,
+				"bytes":	103246744,
+				"bits_per_second":	249553055.219955,
+				"omitted":	false
+			}
+		}],
+	"end":	{
+		"streams":	[{
+				"sender":	{
+					"socket":	6,
+					"start":	0,
+					"end":	3.309813,
+					"seconds":	3.309813,
+					"bytes":	0,
+					"bits_per_second":	0
+				},
+				"receiver":	{
+					"socket":	6,
+					"start":	0,
+					"end":	3.309813,
+					"seconds":	3.309813,
+					"bytes":	103246744,
+					"bits_per_second":	249553055.219955
+				}
+			}],
+		"sum_sent":	{
+			"start":	0,
+			"end":	3.309813,
+			"seconds":	3.309813,
+			"bytes":	0,
+			"bits_per_second":	0
+		},
+		"sum_received":	{
+			"start":	0,
+			"end":	3.309813,
+			"seconds":	3.309813,
+			"bytes":	103246744,
+			"bits_per_second":	249553055.219955
+		},
+		"cpu_utilization_percent":	{
+			"host_total":	0.178154,
+			"host_user":	0,
+			"host_system":	0.178154,
+			"remote_total":	0.447754,
+			"remote_user":	0,
+			"remote_system":	0.447712
+		}
+	}
+}
+{
+	"start":	{
+		"connected":	[{
+				"socket":	6,
+				"local_host":	"172.50.1.2",
+				"local_port":	8080,
+				"remote_host":	"172.50.1.3",
+				"remote_port":	34090
+			}],
+		"version":	"iperf 3.1.3",
+		"system_info":	"Linux alice 5.4.0-56-generic #62~18.04.1-Ubuntu SMP Tue Nov 24 10:07:50 UTC 2020 x86_64",
+		"timestamp":	{
+			"time":	"Wed, 09 Dec 2020 04:15:05 GMT",
+			"timesecs":	1607487305
+		},
+		"accepted_connection":	{
+			"host":	"172.50.1.3",
+			"port":	34088
+		},
+		"cookie":	"bob.1607487305.212433.5357cfa249e0c3",
+		"tcp_mss_default":	1448,
+		"test_start":	{
+			"protocol":	"TCP",
+			"num_streams":	1,
+			"blksize":	131072,
+			"omit":	0,
+			"duration":	10,
+			"bytes":	104857600,
+			"blocks":	0,
+			"reverse":	0
+		}
+	},
+	"intervals":	[{
+			"streams":	[{
+					"socket":	6,
+					"start":	0,
+					"end":	2.497045,
+					"seconds":	2.497045,
+					"bytes":	103006432,
+					"bits_per_second":	330010649.690522,
+					"omitted":	false
+				}],
+			"sum":	{
+				"start":	0,
+				"end":	2.497045,
+				"seconds":	2.497045,
+				"bytes":	103006432,
+				"bits_per_second":	330010649.690522,
+				"omitted":	false
+			}
+		}],
+	"end":	{
+		"streams":	[{
+				"sender":	{
+					"socket":	6,
+					"start":	0,
+					"end":	2.497045,
+					"seconds":	2.497045,
+					"bytes":	0,
+					"bits_per_second":	0
+				},
+				"receiver":	{
+					"socket":	6,
+					"start":	0,
+					"end":	2.497045,
+					"seconds":	2.497045,
+					"bytes":	103006432,
+					"bits_per_second":	330010649.690522
+				}
+			}],
+		"sum_sent":	{
+			"start":	0,
+			"end":	2.497045,
+			"seconds":	2.497045,
+			"bytes":	0,
+			"bits_per_second":	0
+		},
+		"sum_received":	{
+			"start":	0,
+			"end":	2.497045,
+			"seconds":	2.497045,
+			"bytes":	103006432,
+			"bits_per_second":	330010649.690522
+		},
+		"cpu_utilization_percent":	{
+			"host_total":	0.186413,
+			"host_user":	0.029334,
+			"host_system":	0.157078,
+			"remote_total":	0.606228,
+			"remote_user":	0.606140,
+			"remote_system":	0
+		}
+	}
+}
+{
+	"start":	{
+		"connected":	[{
+				"socket":	6,
+				"local_host":	"172.50.1.2",
+				"local_port":	8080,
+				"remote_host":	"172.50.1.3",
+				"remote_port":	34096
+			}],
+		"version":	"iperf 3.1.3",
+		"system_info":	"Linux alice 5.4.0-56-generic #62~18.04.1-Ubuntu SMP Tue Nov 24 10:07:50 UTC 2020 x86_64",
+		"timestamp":	{
+			"time":	"Wed, 09 Dec 2020 04:15:17 GMT",
+			"timesecs":	1607487317
+		},
+		"accepted_connection":	{
+			"host":	"172.50.1.3",
+			"port":	34094
+		},
+		"cookie":	"bob.1607487317.412764.188542c701b976",
+		"tcp_mss_default":	1448,
+		"test_start":	{
+			"protocol":	"TCP",
+			"num_streams":	1,
+			"blksize":	131072,
+			"omit":	0,
+			"duration":	10,
+			"bytes":	104857600,
+			"blocks":	0,
+			"reverse":	0
+		}
+	},
+	"intervals":	[{
+			"streams":	[{
+					"socket":	6,
+					"start":	0,
+					"end":	2.173093,
+					"seconds":	2.173093,
+					"bytes":	102214320,
+					"bits_per_second":	376290669.297414,
+					"omitted":	false
+				}],
+			"sum":	{
+				"start":	0,
+				"end":	2.173093,
+				"seconds":	2.173093,
+				"bytes":	102214320,
+				"bits_per_second":	376290669.297414,
+				"omitted":	false
+			}
+		}],
+	"end":	{
+		"streams":	[{
+				"sender":	{
+					"socket":	6,
+					"start":	0,
+					"end":	2.173093,
+					"seconds":	2.173093,
+					"bytes":	0,
+					"bits_per_second":	0
+				},
+				"receiver":	{
+					"socket":	6,
+					"start":	0,
+					"end":	2.173093,
+					"seconds":	2.173093,
+					"bytes":	102214320,
+					"bits_per_second":	376290669.297414
+				}
+			}],
+		"sum_sent":	{
+			"start":	0,
+			"end":	2.173093,
+			"seconds":	2.173093,
+			"bytes":	0,
+			"bits_per_second":	0
+		},
+		"sum_received":	{
+			"start":	0,
+			"end":	2.173093,
+			"seconds":	2.173093,
+			"bytes":	102214320,
+			"bits_per_second":	376290669.297414
+		},
+		"cpu_utilization_percent":	{
+			"host_total":	0.189027,
+			"host_user":	0.006040,
+			"host_system":	0.182995,
+			"remote_total":	0.833258,
+			"remote_user":	0,
+			"remote_system":	0.833027
+		}
+	}
+}
+{
+	"start":	{
+		"connected":	[{
+				"socket":	6,
+				"local_host":	"172.50.1.2",
+				"local_port":	8080,
+				"remote_host":	"172.50.1.3",
+				"remote_port":	34104
+			}],
+		"version":	"iperf 3.1.3",
+		"system_info":	"Linux alice 5.4.0-56-generic #62~18.04.1-Ubuntu SMP Tue Nov 24 10:07:50 UTC 2020 x86_64",
+		"timestamp":	{
+			"time":	"Wed, 09 Dec 2020 04:15:29 GMT",
+			"timesecs":	1607487329
+		},
+		"accepted_connection":	{
+			"host":	"172.50.1.3",
+			"port":	34102
+		},
+		"cookie":	"bob.1607487329.112403.5acf2999708014",
+		"tcp_mss_default":	1448,
+		"test_start":	{
+			"protocol":	"TCP",
+			"num_streams":	1,
+			"blksize":	131072,
+			"omit":	0,
+			"duration":	10,
+			"bytes":	104857600,
+			"blocks":	0,
+			"reverse":	0
+		}
+	},
+	"intervals":	[{
+			"streams":	[{
+					"socket":	6,
+					"start":	0,
+					"end":	2.302105,
+					"seconds":	2.302105,
+					"bytes":	102473568,
+					"bits_per_second":	356103897.008426,
+					"omitted":	false
+				}],
+			"sum":	{
+				"start":	0,
+				"end":	2.302105,
+				"seconds":	2.302105,
+				"bytes":	102473568,
+				"bits_per_second":	356103897.008426,
+				"omitted":	false
+			}
+		}],
+	"end":	{
+		"streams":	[{
+				"sender":	{
+					"socket":	6,
+					"start":	0,
+					"end":	2.302105,
+					"seconds":	2.302105,
+					"bytes":	0,
+					"bits_per_second":	0
+				},
+				"receiver":	{
+					"socket":	6,
+					"start":	0,
+					"end":	2.302105,
+					"seconds":	2.302105,
+					"bytes":	102473568,
+					"bits_per_second":	356103897.008426
+				}
+			}],
+		"sum_sent":	{
+			"start":	0,
+			"end":	2.302105,
+			"seconds":	2.302105,
+			"bytes":	0,
+			"bits_per_second":	0
+		},
+		"sum_received":	{
+			"start":	0,
+			"end":	2.302105,
+			"seconds":	2.302105,
+			"bytes":	102473568,
+			"bits_per_second":	356103897.008426
+		},
+		"cpu_utilization_percent":	{
+			"host_total":	0.206099,
+			"host_user":	0,
+			"host_system":	0.206082,
+			"remote_total":	0.880179,
+			"remote_user":	0,
+			"remote_system":	0.879959
+		}
+	}
+}
+{
+	"start":	{
+		"connected":	[{
+				"socket":	6,
+				"local_host":	"172.50.1.2",
+				"local_port":	8080,
+				"remote_host":	"172.50.1.3",
+				"remote_port":	34110
+			}],
+		"version":	"iperf 3.1.3",
+		"system_info":	"Linux alice 5.4.0-56-generic #62~18.04.1-Ubuntu SMP Tue Nov 24 10:07:50 UTC 2020 x86_64",
+		"timestamp":	{
+			"time":	"Wed, 09 Dec 2020 04:15:41 GMT",
+			"timesecs":	1607487341
+		},
+		"accepted_connection":	{
+			"host":	"172.50.1.3",
+			"port":	34108
+		},
+		"cookie":	"bob.1607487341.612594.58a1dfb60638f4",
+		"tcp_mss_default":	1448,
+		"test_start":	{
+			"protocol":	"TCP",
+			"num_streams":	1,
+			"blksize":	131072,
+			"omit":	0,
+			"duration":	10,
+			"bytes":	104857600,
+			"blocks":	0,
+			"reverse":	0
+		}
+	},
+	"intervals":	[{
+			"streams":	[{
+					"socket":	6,
+					"start":	0,
+					"end":	2.202315,
+					"seconds":	2.202315,
+					"bytes":	102525640,
+					"bits_per_second":	372428637.364840,
+					"omitted":	false
+				}],
+			"sum":	{
+				"start":	0,
+				"end":	2.202315,
+				"seconds":	2.202315,
+				"bytes":	102525640,
+				"bits_per_second":	372428637.364840,
+				"omitted":	false
+			}
+		}],
+	"end":	{
+		"streams":	[{
+				"sender":	{
+					"socket":	6,
+					"start":	0,
+					"end":	2.202315,
+					"seconds":	2.202315,
+					"bytes":	0,
+					"bits_per_second":	0
+				},
+				"receiver":	{
+					"socket":	6,
+					"start":	0,
+					"end":	2.202315,
+					"seconds":	2.202315,
+					"bytes":	102525640,
+					"bits_per_second":	372428637.364840
+				}
+			}],
+		"sum_sent":	{
+			"start":	0,
+			"end":	2.202315,
+			"seconds":	2.202315,
+			"bytes":	0,
+			"bits_per_second":	0
+		},
+		"sum_received":	{
+			"start":	0,
+			"end":	2.202315,
+			"seconds":	2.202315,
+			"bytes":	102525640,
+			"bits_per_second":	372428637.364840
+		},
+		"cpu_utilization_percent":	{
+			"host_total":	0.182067,
+			"host_user":	0.000232,
+			"host_system":	0.181843,
+			"remote_total":	0.841773,
+			"remote_user":	0,
+			"remote_system":	0.841773
+		}
+	}
+}
+{
+	"start":	{
+		"connected":	[{
+				"socket":	6,
+				"local_host":	"172.50.1.2",
+				"local_port":	8080,
+				"remote_host":	"172.50.1.3",
+				"remote_port":	34120
+			}],
+		"version":	"iperf 3.1.3",
+		"system_info":	"Linux alice 5.4.0-56-generic #62~18.04.1-Ubuntu SMP Tue Nov 24 10:07:50 UTC 2020 x86_64",
+		"timestamp":	{
+			"time":	"Wed, 09 Dec 2020 04:15:53 GMT",
+			"timesecs":	1607487353
+		},
+		"accepted_connection":	{
+			"host":	"172.50.1.3",
+			"port":	34118
+		},
+		"cookie":	"bob.1607487353.512471.6da4311b757946",
+		"tcp_mss_default":	1448,
+		"test_start":	{
+			"protocol":	"TCP",
+			"num_streams":	1,
+			"blksize":	131072,
+			"omit":	0,
+			"duration":	10,
+			"bytes":	104857600,
+			"blocks":	0,
+			"reverse":	0
+		}
+	},
+	"intervals":	[{
+			"streams":	[{
+					"socket":	6,
+					"start":	0,
+					"end":	2.101753,
+					"seconds":	2.101753,
+					"bytes":	103512008,
+					"bits_per_second":	394002561.386041,
+					"omitted":	false
+				}],
+			"sum":	{
+				"start":	0,
+				"end":	2.101753,
+				"seconds":	2.101753,
+				"bytes":	103512008,
+				"bits_per_second":	394002561.386041,
+				"omitted":	false
+			}
+		}],
+	"end":	{
+		"streams":	[{
+				"sender":	{
+					"socket":	6,
+					"start":	0,
+					"end":	2.101753,
+					"seconds":	2.101753,
+					"bytes":	0,
+					"bits_per_second":	0
+				},
+				"receiver":	{
+					"socket":	6,
+					"start":	0,
+					"end":	2.101753,
+					"seconds":	2.101753,
+					"bytes":	103512008,
+					"bits_per_second":	394002561.386041
+				}
+			}],
+		"sum_sent":	{
+			"start":	0,
+			"end":	2.101753,
+			"seconds":	2.101753,
+			"bytes":	0,
+			"bits_per_second":	0
+		},
+		"sum_received":	{
+			"start":	0,
+			"end":	2.101753,
+			"seconds":	2.101753,
+			"bytes":	103512008,
+			"bits_per_second":	394002561.386041
+		},
+		"cpu_utilization_percent":	{
+			"host_total":	0.185793,
+			"host_user":	0.002788,
+			"host_system":	0.183005,
+			"remote_total":	0.832532,
+			"remote_user":	0,
+			"remote_system":	0.832282
+		}
+	}
+}
+{
+	"start":	{
+		"connected":	[{
+				"socket":	6,
+				"local_host":	"172.50.1.2",
+				"local_port":	8080,
+				"remote_host":	"172.50.1.3",
+				"remote_port":	34130
+			}],
+		"version":	"iperf 3.1.3",
+		"system_info":	"Linux alice 5.4.0-56-generic #62~18.04.1-Ubuntu SMP Tue Nov 24 10:07:50 UTC 2020 x86_64",
+		"timestamp":	{
+			"time":	"Wed, 09 Dec 2020 04:16:06 GMT",
+			"timesecs":	1607487366
+		},
+		"accepted_connection":	{
+			"host":	"172.50.1.3",
+			"port":	34128
+		},
+		"cookie":	"bob.1607487365.912478.7e0bbf477e018c",
+		"tcp_mss_default":	1448,
+		"test_start":	{
+			"protocol":	"TCP",
+			"num_streams":	1,
+			"blksize":	131072,
+			"omit":	0,
+			"duration":	10,
+			"bytes":	104857600,
+			"blocks":	0,
+			"reverse":	0
+		}
+	},
+	"intervals":	[{
+			"streams":	[{
+					"socket":	6,
+					"start":	0,
+					"end":	2.098261,
+					"seconds":	2.098261,
+					"bytes":	101524376,
+					"bits_per_second":	387080089.005479,
+					"omitted":	false
+				}],
+			"sum":	{
+				"start":	0,
+				"end":	2.098261,
+				"seconds":	2.098261,
+				"bytes":	101524376,
+				"bits_per_second":	387080089.005479,
+				"omitted":	false
+			}
+		}],
+	"end":	{
+		"streams":	[{
+				"sender":	{
+					"socket":	6,
+					"start":	0,
+					"end":	2.098261,
+					"seconds":	2.098261,
+					"bytes":	0,
+					"bits_per_second":	0
+				},
+				"receiver":	{
+					"socket":	6,
+					"start":	0,
+					"end":	2.098261,
+					"seconds":	2.098261,
+					"bytes":	101524376,
+					"bits_per_second":	387080089.005479
+				}
+			}],
+		"sum_sent":	{
+			"start":	0,
+			"end":	2.098261,
+			"seconds":	2.098261,
+			"bytes":	0,
+			"bits_per_second":	0
+		},
+		"sum_received":	{
+			"start":	0,
+			"end":	2.098261,
+			"seconds":	2.098261,
+			"bytes":	101524376,
+			"bits_per_second":	387080089.005479
+		},
+		"cpu_utilization_percent":	{
+			"host_total":	0.173782,
+			"host_user":	0.000926,
+			"host_system":	0.172856,
+			"remote_total":	0.912142,
+			"remote_user":	0,
+			"remote_system":	0.911960
+		}
+	}
+}
+{
+	"start":	{
+		"connected":	[{
+				"socket":	6,
+				"local_host":	"172.50.1.2",
+				"local_port":	8080,
+				"remote_host":	"172.50.1.3",
+				"remote_port":	34140
+			}],
+		"version":	"iperf 3.1.3",
+		"system_info":	"Linux alice 5.4.0-56-generic #62~18.04.1-Ubuntu SMP Tue Nov 24 10:07:50 UTC 2020 x86_64",
+		"timestamp":	{
+			"time":	"Wed, 09 Dec 2020 04:16:18 GMT",
+			"timesecs":	1607487378
+		},
+		"accepted_connection":	{
+			"host":	"172.50.1.3",
+			"port":	34138
+		},
+		"cookie":	"bob.1607487378.112453.27c50900177a65",
+		"tcp_mss_default":	1448,
+		"test_start":	{
+			"protocol":	"TCP",
+			"num_streams":	1,
+			"blksize":	131072,
+			"omit":	0,
+			"duration":	10,
+			"bytes":	104857600,
+			"blocks":	0,
+			"reverse":	0
+		}
+	},
+	"intervals":	[{
+			"streams":	[{
+					"socket":	6,
+					"start":	0,
+					"end":	2.014789,
+					"seconds":	2.014789,
+					"bytes":	102359872,
+					"bits_per_second":	406434089.893888,
+					"omitted":	false
+				}],
+			"sum":	{
+				"start":	0,
+				"end":	2.014789,
+				"seconds":	2.014789,
+				"bytes":	102359872,
+				"bits_per_second":	406434089.893888,
+				"omitted":	false
+			}
+		}],
+	"end":	{
+		"streams":	[{
+				"sender":	{
+					"socket":	6,
+					"start":	0,
+					"end":	2.014789,
+					"seconds":	2.014789,
+					"bytes":	0,
+					"bits_per_second":	0
+				},
+				"receiver":	{
+					"socket":	6,
+					"start":	0,
+					"end":	2.014789,
+					"seconds":	2.014789,
+					"bytes":	102359872,
+					"bits_per_second":	406434089.893888
+				}
+			}],
+		"sum_sent":	{
+			"start":	0,
+			"end":	2.014789,
+			"seconds":	2.014789,
+			"bytes":	0,
+			"bits_per_second":	0
+		},
+		"sum_received":	{
+			"start":	0,
+			"end":	2.014789,
+			"seconds":	2.014789,
+			"bytes":	102359872,
+			"bits_per_second":	406434089.893888
+		},
+		"cpu_utilization_percent":	{
+			"host_total":	0.177924,
+			"host_user":	0.000812,
+			"host_system":	0.177103,
+			"remote_total":	0.913331,
+			"remote_user":	0,
+			"remote_system":	0.912955
+		}
+	}
+}

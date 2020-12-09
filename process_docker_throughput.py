@@ -85,6 +85,7 @@ def main(data_dir):
         meta_json = json.load(fp)
         ipsec_dir = meta_json.get('ipsec')
         macsec_dir = meta_json.get('macsec')
+        none_dir = meta_json.get('none')
 
     if ipsec_dir is None or macsec_dir is None:
         print('No data!')
@@ -100,10 +101,18 @@ def main(data_dir):
     macsec_throughput_avgs, macsec_throughput_stds = process_result_files(
         macsec_dir_path, 'macsec_eval')
 
+    if none_dir is not None:
+        # No security protocols
+        none_dir_path = os.path.join(data_dir, none_dir)
+        none_throughput_avgs, none_throughput_stds = process_result_files(
+            none_dir_path, 'none_eval')
+        print('Baseline:')
+        print(none_throughput_avgs)
+        print(none_throughput_stds)
+
     # Plot throughput figure
     throughput_avgs = [ipsec_throughput_avgs, macsec_throughput_avgs]
     throughput_stds = [ipsec_throughput_stds, macsec_throughput_stds]
-    print(throughput_avgs)
     plot_throughput(throughput_avgs, throughput_stds)
 
 
