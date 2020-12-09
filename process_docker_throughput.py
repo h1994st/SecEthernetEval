@@ -11,8 +11,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def plot_throughput(throughput_avgs, throughput_stds):
-    width = 0.35
+def plot_throughput(throughput_avgs, throughput_stds, data_label=False):
+    width = 0.25
 
     x = np.arange(100, 1001, 100)
     N = len(x)
@@ -28,23 +28,32 @@ def plot_throughput(throughput_avgs, throughput_stds):
         ind + width, throughput_avgs[1], yerr=throughput_stds[1],
         width=width, label='MACsec',
         error_kw=dict(elinewidth=6, ecolor='black'))
+    plt.bar(
+        ind + 2 * width, throughput_avgs[2], yerr=throughput_stds[2],
+        width=width, label='Baseline',
+        error_kw=dict(elinewidth=6, ecolor='black'))
 
-    # Attach data
-    for i in range(N):
-        plt.text(
-            x=ind[i] - 0.08,
-            y=throughput_avgs[0][i] + throughput_stds[1][i] + 12,
-            s=str(round(throughput_avgs[0][i], 2)), size=18)
-        plt.text(
-            x=ind[i] + width - 0.08,
-            y=throughput_avgs[1][i] + throughput_stds[1][i] + 12,
-            s=str(round(throughput_avgs[1][i], 2)), size=18)
+    # Data label
+    if data_label:
+        for i in range(N):
+            plt.text(
+                x=ind[i],
+                y=throughput_avgs[0][i] + throughput_stds[1][i] + 12,
+                s=str(round(throughput_avgs[0][i], 2)), size=18)
+            plt.text(
+                x=ind[i] + width,
+                y=throughput_avgs[1][i] + throughput_stds[1][i] + 12,
+                s=str(round(throughput_avgs[1][i], 2)), size=18)
+            plt.text(
+                x=ind[i] + 2 * width,
+                y=throughput_avgs[2][i] + throughput_stds[2][i] + 12,
+                s=str(round(throughput_avgs[2][i], 2)), size=18)
 
-    plt.xticks(ind + width / 2, x)
+    plt.xticks(ind + width * 3 / 2 - width / 2, x)
     plt.xlabel('Link Bit Rate (Mbps)')
 
     plt.ylabel('Throughput (Mbps)')
-    plt.ylim(0, 100)
+    plt.ylim(0, 500)
 
     plt.legend(loc='lower center', ncol=2, bbox_to_anchor=(0.5, 1))
     plt.grid(True, axis='y', linestyle='--')
@@ -127,8 +136,14 @@ def main(data_dir):
         none_dir = none_entry.get('dir')
         none_type = none_entry.get('type')
 
-    if ipsec_dir is None or macsec_dir is None:
-        print('No data!')
+    if ipsec_dir is None:
+        print('No IPsec data!')
+        return
+    if macsec_dir is None:
+        print('No MACsec data!')
+        return
+    if none_dir is None:
+        print('No baseline data!')
         return
 
     # IPsec
@@ -141,18 +156,25 @@ def main(data_dir):
     macsec_throughput_avgs, macsec_throughput_stds = process_result_files(
         macsec_dir_path, 'macsec_eval', macsec_type)
 
-    if none_dir is not None:
-        # No security protocols
-        none_dir_path = os.path.join(data_dir, none_dir)
-        none_throughput_avgs, none_throughput_stds = process_result_files(
-            none_dir_path, 'none_eval', none_type)
-        print('Baseline:')
-        print(none_throughput_avgs)
-        print(none_throughput_stds)
+    # No security protocols
+    none_dir_path = os.path.join(data_dir, none_dir)
+    none_throughput_avgs, none_throughput_stds = process_result_files(
+        none_dir_path, 'none_eval', none_type)
+    print('Baseline:')
+    print(none_throughput_avgs)
+    print(none_throughput_stds)
 
     # Plot throughput figure
-    throughput_avgs = [ipsec_throughput_avgs, macsec_throughput_avgs]
-    throughput_stds = [ipsec_throughput_stds, macsec_throughput_stds]
+    throughput_avgs = [
+        ipsec_throughput_avgs,
+        macsec_throughput_avgs,
+        none_throughput_avgs
+    ]
+    throughput_stds = [
+        ipsec_throughput_stds,
+        macsec_throughput_stds,
+        none_throughput_stds
+    ]
     plot_throughput(throughput_avgs, throughput_stds)
 
 
