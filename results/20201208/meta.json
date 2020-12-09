@@ -1,5 +1,14 @@
 {
-    "ipsec": "ipsec_2",
-    "macsec": "macsec_1",
-    "none": "none_1"
+    "ipsec": {
+        "dir": "ipsec_3",
+        "type": "text"
+    },
+    "macsec": {
+        "dir": "macsec_2",
+        "type": "text"
+    },
+    "none": {
+        "dir": "none_2",
+        "type": "text"
+    }
 }

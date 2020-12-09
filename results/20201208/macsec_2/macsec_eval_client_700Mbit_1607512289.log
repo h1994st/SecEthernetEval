@@ -1,0 +1,14 @@
+Connecting to host 10.1.0.2, port 8080
+[  5] local 10.1.0.3 port 49358 connected to 10.1.0.2 port 8080
+[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+[  5]   0.00-61.60  sec  21.2 MBytes  2893826 bits/sec    0    131 KBytes       
+[  5]  61.60-120.90 sec  21.2 MBytes  3006023 bits/sec    0    131 KBytes       
+[  5] 120.90-183.20 sec  22.5 MBytes  3029519 bits/sec    0    131 KBytes       
+[  5] 183.20-240.30 sec  20.6 MBytes  3024055 bits/sec    4    158 KBytes       
+[  5] 240.30-282.70 sec  15.0 MBytes  2967822 bits/sec    0    158 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  5]   0.00-282.70 sec   101 MBytes  2984666 bits/sec    4             sender
+[  5]   0.00-282.70 sec   101 MBytes  2984666 bits/sec                  receiver
+
+iperf Done.
