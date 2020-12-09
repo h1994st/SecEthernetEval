@@ -29,6 +29,7 @@ def plot_throughput(throughput_avgs, throughput_stds):
         width=width, label='MACsec',
         error_kw=dict(elinewidth=6, ecolor='black'))
 
+    # Attach data
     for i in range(N):
         plt.text(
             x=ind[i] - 0.08,
