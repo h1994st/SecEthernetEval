@@ -1,0 +1,51 @@
+# Driver interface for Host AP driver
+CONFIG_DRIVER_HOSTAP=y
+
+# Driver interface for wired authenticator
+CONFIG_DRIVER_WIRED=y
+
+# Enable MACsec
+CONFIG_MACSEC=y
+
+# Driver interface from MACsec Linux kernel driver
+CONFIG_DRIVER_MACSEC_LINUX=y
+
+# Driver interface for drivers using the nl80211 kernel interface
+CONFIG_DRIVER_NL80211=y
+
+# Use libnl 3.2 libraries (if this is selected, CONFIG_LIBNL20 is ignored)
+CONFIG_LIBNL32=y
+
+# Integrated EAP server
+CONFIG_EAP=y
+
+# EAP-TLS for the integrated EAP server
+CONFIG_EAP_TLS=y
+
+# EAP-PSK for the integrated EAP server (this is _not_ needed for WPA-PSK)
+CONFIG_EAP_PSK=y
+
+# PKCS#12 (PFX) support (used to read private key and certificate file from
+# a file that usually has extension .p12 or .pfx)
+CONFIG_PKCS12=y
+
+# RADIUS authentication server. This provides access to the integrated EAP
+# server from external hosts using RADIUS.
+#CONFIG_RADIUS_SERVER=y
+
+# Select TLS implementation
+# Can choose wolfssl, but lead to errors
+CONFIG_TLS=openssl
+
+# TLS-based EAP methods require at least TLS v1.0. Newer version of TLS (v1.1)
+# can be enabled to get a stronger construction of messages when block ciphers
+# are used.
+#CONFIG_TLSV11=y
+
+# TLS-based EAP methods require at least TLS v1.0. Newer version of TLS (v1.2)
+# can be enabled to enable use of stronger crypto algorithms.
+#CONFIG_TLSV12=y
+
+# Select which ciphers to use by default with OpenSSL if the user does not
+# specify them.
+#CONFIG_TLS_DEFAULT_CIPHERS="DEFAULT:!EXP:!LOW"

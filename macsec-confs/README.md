@@ -97,7 +97,29 @@ make install
 ### Start `wpa_supplicant`
 
 ```bash
-wpa_supplicant -i eth0 -Dmacsec_linux -c /code/macsec-confs/alice/wpa_supplicant.conf
+wpa_supplicant -i eth0 -D macsec_linux -c /code/macsec-confs/alice/wpa_supplicant.conf
 
-wpa_supplicant -i eth0 -Dmacsec_linux -c /code/macsec-confs/bob/wpa_supplicant.conf
+wpa_supplicant -i eth0 -D macsec_linux -c /code/macsec-confs/bob/wpa_supplicant.conf
+```
+
+## `hostapd`
+
+Reference: [hostapd README](http://w1.fi/cgit/hostap/plain/hostapd/README)
+
+```bash
+wget https://w1.fi/releases/hostapd-2.9.tar.gz
+tar -xzf hostapd-2.9.tar.gz
+cd hostapd-2.9/hostapd
+# Move `hostapd_build_config` to the current directory
+# Rename it to `.config`
+cp /code/macsec-confs/hostapd_build_config .config
+make
+make install
+```
+
+### Start `hostapd`
+
+```bash
+cp /code/macsec-confs/alice/hostapd.eap_user /etc
+hostapd /code/macsec-confs/alice/hostapd.conf
 ```
