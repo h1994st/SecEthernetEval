@@ -2,7 +2,7 @@
 
 # Two ECUs
 rm -f docker-compose.yml
-ln -s ./confs/no_restriction_containers.yml docker-compose.yml
+ln -s ./confs/ecu_containers.yml docker-compose.yml
 
 bash scripts/ipsec_eval.sh
 mkdir results/ecu_containers/ipsec_4
