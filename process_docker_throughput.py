@@ -188,10 +188,11 @@ def main(data_dir):
         print('No baseline data!')
         return
 
+    w_unlimited = False
     # IPsec
     ipsec_dir_path = os.path.join(data_dir, ipsec_dir)
     ipsec_throughput_avgs, ipsec_throughput_stds = process_result_files(
-        ipsec_dir_path, 'ipsec_eval', ipsec_type, True)
+        ipsec_dir_path, 'ipsec_eval', ipsec_type, w_unlimited)
     print('IPsec:')
     print(ipsec_throughput_avgs)
     print(ipsec_throughput_stds)
@@ -199,7 +200,7 @@ def main(data_dir):
     # MACsec
     macsec_dir_path = os.path.join(data_dir, macsec_dir)
     macsec_throughput_avgs, macsec_throughput_stds = process_result_files(
-        macsec_dir_path, 'macsec_eval', macsec_type, True)
+        macsec_dir_path, 'macsec_eval', macsec_type, w_unlimited)
     print('MACsec:')
     print(macsec_throughput_avgs)
     print(macsec_throughput_stds)
@@ -207,7 +208,7 @@ def main(data_dir):
     # No security protocols
     none_dir_path = os.path.join(data_dir, none_dir)
     none_throughput_avgs, none_throughput_stds = process_result_files(
-        none_dir_path, 'none_eval', none_type, True)
+        none_dir_path, 'none_eval', none_type, w_unlimited)
     print('Baseline:')
     print(none_throughput_avgs)
     print(none_throughput_stds)
