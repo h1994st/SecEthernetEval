@@ -1,0 +1,11 @@
+Connecting to host 172.50.1.2, port 8080
+[  5] local 172.50.1.3 port 45096 connected to 172.50.1.2 port 8080
+[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+[  5]   0.00-60.25  sec  52.4 MBytes  7300196 bits/sec    3   51.1 KBytes       
+[  5]  60.25-114.45 sec  47.8 MBytes  7390794 bits/sec    0   69.0 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  5]   0.00-114.45 sec   100 MBytes  7343100 bits/sec    3             sender
+[  5]   0.00-114.45 sec   100 MBytes  7343100 bits/sec                  receiver
+
+iperf Done.
