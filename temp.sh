@@ -1,27 +1,33 @@
 #!/bin/bash
 
+# Two ECUs
 rm -f docker-compose.yml
 ln -s ./confs/no_restriction_containers.yml docker-compose.yml
 
-TOPIC="none_eval"
+bash scripts/ipsec_eval.sh
+mkdir results/ecu_containers/ipsec_4
+mv results/ipsec_eval_client_*.log results/ecu_containers/ipsec_4
 
-./scripts/host_init.sh
+bash scripts/macsec_eval.sh
+mkdir results/ecu_containers/macsec_3
+mv results/macsec_eval_client_*.log results/ecu_containers/macsec_3
 
-# Run iperf3
-docker-compose exec alice /code/scripts/iperf3_start_server.sh \
-    $TOPIC "none_all"
-DATA_SIZE=5368709120  # 5 GB of data
-SERVER_IP_ADDR=172.50.1.2
+bash scripts/none_eval.sh
+mkdir results/ecu_containers/none_3
+mv results/none_eval_client_*.log results/ecu_containers/none_3
 
-# 10 times
-for n in `seq 10` ;
-do
+# No restriction
+rm -f docker-compose.yml
+ln -s ./confs/no_restriction_containers.yml docker-compose.yml
 
-    docker-compose exec bob /code/scripts/iperf3_start_client.sh \
-        $SERVER_IP_ADDR $DATA_SIZE $TOPIC "unlimited_"$(date +%s)
+bash scripts/ipsec_eval.sh
+mkdir results/no_restriction_containers/ipsec_2
+mv results/ipsec_eval_client_*.log results/no_restriction_containers/ipsec_2
 
-done
+bash scripts/macsec_eval.sh
+mkdir results/no_restriction_containers/macsec_2
+mv results/macsec_eval_client_*.log results/no_restriction_containers/macsec_2
 
-./scripts/host_stop.sh
-
-mv results/none_eval_client_*.log results/no_restriction_containers/none_1
+bash scripts/none_eval.sh
+mkdir results/no_restriction_containers/none_2
+mv results/none_eval_client_*.log results/no_restriction_containers/none_2

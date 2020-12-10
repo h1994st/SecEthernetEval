@@ -35,9 +35,9 @@ done
 # 10 times
 for n in `seq 10` ;
 do
-
+    # 5GB of data
     docker-compose exec bob /code/scripts/iperf3_start_client.sh \
-        $SERVER_IP_ADDR $DATA_SIZE $TOPIC "unlimited_"$(date +%s)
+        $SERVER_IP_ADDR 5368709120 $TOPIC "unlimited_"$(date +%s)
 
 done
 
