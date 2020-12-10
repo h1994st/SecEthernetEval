@@ -1,6 +1,6 @@
 {
     "ipsec": {
-        "dir": "ipsec_3",
+        "dir": "ipsec_4",
         "type": "text"
     },
     "macsec": {
