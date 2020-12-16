@@ -188,7 +188,7 @@ def main(data_dir):
         print('No baseline data!')
         return
 
-    w_unlimited = False
+    w_unlimited = True
     # IPsec
     ipsec_dir_path = os.path.join(data_dir, ipsec_dir)
     ipsec_throughput_avgs, ipsec_throughput_stds = process_result_files(

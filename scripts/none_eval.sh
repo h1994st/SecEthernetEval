@@ -3,7 +3,11 @@
 SCRIPTS_DIR=$(dirname $(realpath $0))
 TOPIC="none_eval"
 
-$SCRIPTS_DIR/host_init.sh
+rm -f docker-compose.yml
+ln -s ./confs/no_restriction_containers.yml docker-compose.yml
+
+# Start two Docker containers for Alice and Bob
+docker-compose up -d
 
 # Run iperf3
 docker-compose exec -T alice /code/scripts/iperf3_start_server.sh \
@@ -41,4 +45,5 @@ do
 
 done
 
-$SCRIPTS_DIR/host_stop.sh
+# Stop Docker
+docker-compose down
