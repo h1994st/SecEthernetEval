@@ -25,7 +25,8 @@ RUN wget https://github.com/wolfSSL/wolfssl/archive/v4.4.0-stable.tar.gz && \
     cd /home/seceth &&\
     chown -R seceth:seceth ./wolfssl-4.4.0-stable
 
-# MACsec, wpa_supplicant
+# MACsec
+# wpa_supplicant
 COPY --chown=seceth:seceth ./macsec-confs/wpa_supplicant_build_config \
     /home/seceth/wpa_supplicant_build_config
 RUN wget http://w1.fi/releases/wpa_supplicant-2.9.tar.gz && \
@@ -35,5 +36,16 @@ RUN wget http://w1.fi/releases/wpa_supplicant-2.9.tar.gz && \
     make && make install && \
     cd /home/seceth &&\
     chown -R seceth:seceth ./wpa_supplicant-2.9
+
+# hostapd
+COPY --chown=seceth:seceth ./macsec-confs/hostapd_build_config \
+    /home/seceth/hostapd_build_config
+RUN wget https://w1.fi/releases/hostapd-2.9.tar.gz && \
+    tar -xzf hostapd-2.9.tar.gz && \
+    cd hostapd-2.9/hostapd && \
+    mv /home/seceth/hostapd_build_config .config && \
+    make && make install && \
+    cd /home/seceth &&\
+    chown -R seceth:seceth ./hostapd-2.9
 
 USER seceth

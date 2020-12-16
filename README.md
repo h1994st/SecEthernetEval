@@ -5,6 +5,17 @@
 - Alice: 172.50.1.2
 - Bob: 172.50.1.3
 
+### Docker image
+
+```bash
+docker pull h1994st/sec_eval
+```
+
+#### CHANGELOG
+
+- 0.2: include `hostapd`
+- 0.1: integrate WolfSSL v4.4.0, wpa_supplicant 2.9, strongSwan and iperf3
+
 ### Docker compose
 
 ```bash
@@ -17,7 +28,7 @@ docker-compose exec bob /code/scripts/config.sh
 docker-compose down
 ```
 
-### Docker
+### Run Docker containers
 
 ```bash
 docker run -it -d --name=alice --hostname=alice \
@@ -33,18 +44,6 @@ docker run -it -d --name=bob --hostname=bob \
 
 docker exec -it alice /bin/bash
 docker exec -it bob /bin/bash
-```
-
-### Prerequisites
-
-```bash
-sudo apt update
-sudo apt install -y vim wget git autoconf libtool make apt-utils pkg-config \
-                    libpq-dev libnl-3-dev libnl-genl-3-dev libnl-route-3-dev \
-                    libssl-dev libdbus-1-dev network-manager \
-                    iproute2 bsdmainutils iperf3 \
-                    strongswan libcharon-extra-plugins strongswan-pki \
-                    libgmp-dev iptables module-init-tools
 ```
 
 ## Traffic Control & Generator
