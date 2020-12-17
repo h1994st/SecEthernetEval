@@ -22,8 +22,9 @@ RUN wget https://github.com/wolfSSL/wolfssl/archive/v4.4.0-stable.tar.gz && \
     ./configure --enable-tls13 --enable-hc128 --enable-rabbit --enable-aesccm \
                 --enable-dtls --enable-dtls-mtu && \
     make && make install && \
-    cd /home/seceth &&\
-    chown -R seceth:seceth ./wolfssl-4.4.0-stable
+    cd /home/seceth && \
+    chown -R seceth:seceth ./wolfssl-4.4.0-stable && \
+    ldconfig
 
 # MACsec
 # wpa_supplicant
@@ -34,7 +35,7 @@ RUN wget http://w1.fi/releases/wpa_supplicant-2.9.tar.gz && \
     cd wpa_supplicant-2.9/wpa_supplicant && \
     mv /home/seceth/wpa_supplicant_build_config .config && \
     make && make install && \
-    cd /home/seceth &&\
+    cd /home/seceth && \
     chown -R seceth:seceth ./wpa_supplicant-2.9
 
 # hostapd
@@ -45,7 +46,15 @@ RUN wget https://w1.fi/releases/hostapd-2.9.tar.gz && \
     cd hostapd-2.9/hostapd && \
     mv /home/seceth/hostapd_build_config .config && \
     make && make install && \
-    cd /home/seceth &&\
+    cd /home/seceth && \
     chown -R seceth:seceth ./hostapd-2.9
+
+# iperf3 with TLS
+RUN git clone https://github.com/owenlwebb/iperf.git iperf-wolfssl --depth=1 && \
+    cd iperf-wolfssl && \
+    ./bootstrap.sh && \
+    ./configure LIBS=-lwolfssl && make && \
+    cd /home/seceth && \
+    chown -R seceth:seceth ./iperf-wolfssl
 
 USER seceth
