@@ -13,6 +13,7 @@ docker pull h1994st/sec_eval
 
 #### CHANGELOG
 
+- 0.2.1: fix a bug in `hostapd` so that `CONFIG_L2_PACKET` is enabled, and `l2_packet_linux.c` is included in the program
 - 0.2: include `hostapd`
 - 0.1: integrate WolfSSL v4.4.0, wpa_supplicant 2.9, strongSwan and iperf3
 
@@ -72,5 +73,5 @@ tc qdisc del dev eth0 root
 
 ```bash
 alice# iperf3 -s -d -p 8080
-  bob# iperf3 -c 172.50.1.2 -p 8080 -i 1 -d -4 --get-server-output -n 104857600
+  bob# iperf3 -c 172.50.1.2 -p 8080 -i 60 -4 -n 104857600 -b 0
 ```

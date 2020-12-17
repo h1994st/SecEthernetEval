@@ -49,3 +49,7 @@ CONFIG_TLS=openssl
 # Select which ciphers to use by default with OpenSSL if the user does not
 # specify them.
 #CONFIG_TLS_DEFAULT_CIPHERS="DEFAULT:!EXP:!LOW"
+
+# Temporary workarounds
+# To enable CONFIG_L2_PACKET, we enable CONFIG_HS20
+CONFIG_HS20=y

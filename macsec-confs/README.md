@@ -79,7 +79,7 @@ alice# ip addr add 10.1.0.2/24 dev macsec0
 
 # Need to change the ip address
 alice# iperf3 -s -d -p 8080
-  bob# iperf3 -c 10.1.0.2 -p 8080 -i 1 -d -4 --get-server-output -n 104857600
+  bob# iperf3 -c 10.1.0.2 -p 8080 -i 60 -4 -n 104857600 -b 0
 
 alice# ip link set macsec0 down
 alice# ip link delete macsec0
@@ -121,7 +121,7 @@ cd hostapd-2.9/hostapd
 # Move `hostapd_build_config` to the current directory
 # Rename it to `.config`
 cp /code/macsec-confs/hostapd_build_config .config
-make
+make CONFIG_L2_PACKET=linux
 make install
 ```
 
