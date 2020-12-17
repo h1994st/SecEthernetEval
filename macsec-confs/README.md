@@ -1,5 +1,13 @@
 # MACsec
 
+## Host Machine Configuration
+
+The host machine must allow the forwarding of Ethernet multicast packets (i.e., PAE address).
+
+```bash
+sudo ip link set <bridge interface> type bridge group_fwd_mask 0x8
+```
+
 ## Manual Configurations
 
 ### Key Preparation
