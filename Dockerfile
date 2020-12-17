@@ -50,8 +50,11 @@ RUN wget https://w1.fi/releases/hostapd-2.9.tar.gz && \
     chown -R seceth:seceth ./hostapd-2.9
 
 # iperf3 with TLS
+COPY --chown=seceth:seceth ./iperf+certs.diff \
+    /home/seceth/iperf+certs.diff
 RUN git clone https://github.com/owenlwebb/iperf.git iperf-wolfssl --depth=1 && \
     cd iperf-wolfssl && \
+    git apply ../iperf+certs.diff && \
     ./bootstrap.sh && \
     ./configure LIBS=-lwolfssl && make && \
     cd /home/seceth && \

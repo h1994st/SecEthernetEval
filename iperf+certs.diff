@@ -1,0 +1,17 @@
+diff --git a/src/iperf_tcp.c b/src/iperf_tcp.c
+index 5ea1053..1dc9ddd 100644
+--- a/src/iperf_tcp.c
++++ b/src/iperf_tcp.c
+@@ -52,9 +52,9 @@
+ #include "flowlabel.h"
+ #endif /* HAVE_FLOWLABEL */
+
+-#define CERT_FILE_SERVER    "/home/iperftester/wolfssl/certs/server-cert.pem"
+-#define KEY_FILE            "/home/iperftester/wolfssl/certs/server-key.pem"
+-#define CERT_FILE_CLIENT    "/home/iperftester/wolfssl/certs/ca-cert.pem"
++#define CERT_FILE_SERVER    "/home/seceth/wolfssl-4.4.0-stable/certs/server-cert.pem"
++#define KEY_FILE            "/home/seceth/wolfssl-4.4.0-stable/certs/server-key.pem"
++#define CERT_FILE_CLIENT    "/home/seceth/wolfssl-4.4.0-stable/certs/ca-cert.pem"
+
+ /* iperf_tcp_recv
+  *
