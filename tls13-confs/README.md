@@ -14,6 +14,13 @@ cd wolfssl-4.4.0-stable
 
 ## Start
 
+### iperf+wolfssl
+
+```bash
+alice# ./iperf-wolfssl/src/iperf3 -s -p 8080 --ssl-tls-version 1.3 --ssl-server-key /code/ipsec-strongswan-confs/alice/aliceEcc256Key.pem --ssl-server-cert /code/ipsec-strongswan-confs/alice/aliceEcc256Cert.pem --ssl-suites-file /code/tls13-confs/ciphers.txt
+  bob# ./iperf-wolfssl/src/iperf3 -c 172.50.1.2 -p 8080 -n 500M -4 --ssl-tls-version 1.3 --ssl-client-cert /code/ipsec-strongswan-confs/caEcc256Cert.pem --ssl-suites-file /code/tls13-confs/ciphers.txt
+```
+
 ### TLS 1.3
 
 ```bash
