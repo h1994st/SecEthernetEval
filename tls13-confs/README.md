@@ -1,5 +1,4 @@
-TLS 1.3
-===
+# TLS 1.3
 
 ## Build
 
@@ -13,7 +12,7 @@ cd wolfssl-4.4.0-stable
     make && make install
 ```
 
-## Start!
+## Start
 
 ### TLS 1.3
 
