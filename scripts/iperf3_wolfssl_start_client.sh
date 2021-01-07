@@ -12,5 +12,6 @@ echo "[iperf3] Data size:" $DATA_SIZE
     -n $DATA_SIZE -b 0 \
     --logfile "/code/results/"$TOPIC"_client_"$LOG_TAG".log" \
     --ssl-tls-version 1.3 \
-    --ssl-client-cert /code/ipsec-strongswan-confs/caEcc256Cert.pem
+    --ssl-client-cert /code/ipsec-strongswan-confs/caEcc256Cert.pem \
+    --ssl-suites-file /code/tls13-confs/ciphers.txt
 echo "[iperf3] Done!"

@@ -9,7 +9,8 @@ echo "[iperf3] Run iperf3 server at port 8080"
     --logfile /dev/null \
     --ssl-tls-version 1.3 \
     --ssl-server-key /code/ipsec-strongswan-confs/alice/aliceEcc256Key.pem \
-    --ssl-server-cert /code/ipsec-strongswan-confs/alice/aliceEcc256Cert.pem
+    --ssl-server-cert /code/ipsec-strongswan-confs/alice/aliceEcc256Cert.pem \
+    --ssl-suites-file /code/tls13-confs/ciphers.txt
 # Wait for iperf3 server to start
 echo "[iperf3] Wait for the completion ..."
 until pids=$(pidof iperf3)
