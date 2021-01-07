@@ -16,27 +16,6 @@ docker-compose exec -T bob /code/scripts/macsec_start.sh $BOB_IP_ADDR
 docker-compose exec -T alice /code/scripts/iperf3_start_server.sh \
     $TOPIC "macsec_all"
 DATA_SIZE=104857600  # 100 MB of data
-for bit_rate in `seq 100 100 1000` ;
-do
-
-    # Set link bit rate
-    docker-compose exec -T alice /code/scripts/link_set_rate.sh $bit_rate"Mbit"
-    docker-compose exec -T bob /code/scripts/link_set_rate.sh $bit_rate"Mbit"
-
-    # N times
-    for n in `seq $N_TIMES` ;
-    do
-
-        docker-compose exec -T bob /code/scripts/iperf3_start_client.sh \
-            $ALICE_IP_ADDR $DATA_SIZE $TOPIC $bit_rate"Mbit_"$(date +%s)
-
-    done
-
-    # Reset link
-    docker-compose exec -T alice /code/scripts/link_reset.sh
-    docker-compose exec -T bob /code/scripts/link_reset.sh
-
-done
 
 # N times
 for n in `seq $N_TIMES` ;

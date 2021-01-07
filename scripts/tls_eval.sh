@@ -2,7 +2,7 @@
 
 SCRIPTS_DIR=$(dirname $(realpath $0))
 TOPIC="tls_eval"
-N_TIMES=1
+N_TIMES=$1
 
 # Start two Docker containers for Alice and Bob
 docker-compose up -d
