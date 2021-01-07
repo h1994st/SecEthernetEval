@@ -2,6 +2,7 @@
 
 SCRIPTS_DIR=$(dirname $(realpath $0))
 TOPIC="none_eval"
+N_TIMES=1
 
 rm -f docker-compose.yml
 ln -s ./confs/no_restriction_containers.yml docker-compose.yml
@@ -21,8 +22,8 @@ do
     docker-compose exec -T alice /code/scripts/link_set_rate.sh $bit_rate"Mbit"
     docker-compose exec -T bob /code/scripts/link_set_rate.sh $bit_rate"Mbit"
 
-    # 10 times
-    for n in `seq 10` ;
+    # N times
+    for n in `seq $N_TIMES` ;
     do
 
         docker-compose exec -T bob /code/scripts/iperf3_start_client.sh \
@@ -36,8 +37,8 @@ do
 
 done
 
-# 10 times
-for n in `seq 10` ;
+# N times
+for n in `seq $N_TIMES` ;
 do
     # 5GB of data
     docker-compose exec -T bob /code/scripts/iperf3_start_client.sh \

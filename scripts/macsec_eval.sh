@@ -2,6 +2,7 @@
 
 SCRIPTS_DIR=$(dirname $(realpath $0))
 TOPIC="macsec_eval"
+N_TIMES=1
 
 $SCRIPTS_DIR/host_init.sh
 
@@ -22,8 +23,8 @@ do
     docker-compose exec -T alice /code/scripts/link_set_rate.sh $bit_rate"Mbit"
     docker-compose exec -T bob /code/scripts/link_set_rate.sh $bit_rate"Mbit"
 
-    # 10 times
-    for n in `seq 10` ;
+    # N times
+    for n in `seq $N_TIMES` ;
     do
 
         docker-compose exec -T bob /code/scripts/iperf3_start_client.sh \
@@ -37,8 +38,8 @@ do
 
 done
 
-# 10 times
-for n in `seq 10` ;
+# N times
+for n in `seq $N_TIMES` ;
 do
 
     docker-compose exec -T bob /code/scripts/iperf3_start_client.sh \
