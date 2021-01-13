@@ -57,4 +57,17 @@ RUN git clone https://github.com/h1994st/iperf.git iperf-wolfssl --depth=1 && \
     cd /home/seceth && \
     chown -R seceth:seceth ./iperf-wolfssl
 
+# Copy certificates
+COPY ./ipsec-strongswan-confs/alice/aliceRsaKey.pem /etc/ipsec.d/private
+COPY ./ipsec-strongswan-confs/alice/aliceRsaCert.pem /etc/ipsec.d/certs
+COPY ./ipsec-strongswan-confs/bob/bobRsaKey.pem /etc/ipsec.d/private
+COPY ./ipsec-strongswan-confs/bob/bobRsaCert.pem /etc/ipsec.d/certs
+COPY ./ipsec-strongswan-confs/caCert.pem /etc/ipsec.d/cacerts
+
+COPY ./ipsec-strongswan-confs/alice/aliceEcc256Key.pem /etc/ipsec.d/private
+COPY ./ipsec-strongswan-confs/alice/aliceEcc256Cert.pem /etc/ipsec.d/certs
+COPY ./ipsec-strongswan-confs/bob/bobEcc256Key.pem /etc/ipsec.d/private
+COPY ./ipsec-strongswan-confs/bob/bobEcc256Cert.pem /etc/ipsec.d/certs
+COPY ./ipsec-strongswan-confs/caEcc256Cert.pem /etc/ipsec.d/cacerts
+
 USER seceth
