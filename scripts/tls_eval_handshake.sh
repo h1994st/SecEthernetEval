@@ -31,5 +31,3 @@ do
     sudo pkill tcpdump
 
 done
-
-sudo chown h1994st:h1994st $OUTPUT_DIR"/"$TOPIC"_v"$TLS_VERSION"_*.pcap"
