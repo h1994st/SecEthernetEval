@@ -16,7 +16,7 @@ docker-compose exec -T alice /code/scripts/ipsec_activate.sh
 # Run iperf3
 docker-compose exec -T alice /code/scripts/iperf3_start_server.sh \
     $TOPIC "ipsec_all"
-DATA_SIZE=104857600  # 100 MB of data
+TEST_DURATION=120  # 2 mins
 SERVER_IP_ADDR=172.50.1.2
 for bit_rate in `seq 100 100 1000` ;
 do
@@ -30,7 +30,7 @@ do
     do
 
         docker-compose exec -T bob /code/scripts/iperf3_start_client.sh \
-            $SERVER_IP_ADDR $DATA_SIZE $TOPIC $bit_rate"Mbit_"$(date +%s)
+            $SERVER_IP_ADDR $TEST_DURATION $TOPIC $bit_rate"Mbit_"$(date +%s)
 
     done
 
@@ -45,7 +45,7 @@ for n in `seq $N_TIMES` ;
 do
 
     docker-compose exec -T bob /code/scripts/iperf3_start_client.sh \
-        $SERVER_IP_ADDR $DATA_SIZE $TOPIC "unlimited_"$(date +%s)
+        $SERVER_IP_ADDR $TEST_DURATION $TOPIC "unlimited_"$(date +%s)
 
 done
 
