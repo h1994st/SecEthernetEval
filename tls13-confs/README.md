@@ -25,16 +25,17 @@ alice# ./iperf-wolfssl/src/iperf3 -s -p 8080 --ssl-tls-version 1.3 --ssl-server-
 
 ```bash
 # Handshake
-alice# ./wolfssl-4.4.0-stable/examples/server/server -l TLS13-AES128-GCM-SHA256 -b -p 8080 -v 4 -1 0 -f -c /code/ipsec-strongswan-confs/alice/aliceEcc256Cert.pem -k /code/ipsec-strongswan-confs/alice/aliceEcc256Key.pem -A /code/ipsec-strongswan-confs/caEcc256Cert.pem
-  bob# ./wolfssl-4.4.0-stable/examples/client/client -h 172.50.1.2 -p 8080 -v 4 -1 0 -f -c /code/ipsec-strongswan-confs/bob/bobEcc256Cert.pem -k /code/ipsec-strongswan-confs/bob/bobEcc256Key.pem -A /code/ipsec-strongswan-confs/caEcc256Cert.pem
-  bob# ./wolfssl-4.4.0-stable/examples/client/client -Y -l TLS13-AES128-GCM-SHA256 -h 172.50.1.2 -p 8080 -v 4 -1 0 -f -c /code/ipsec-strongswan-confs/bob/bobEcc256Cert.pem -k /code/ipsec-strongswan-confs/bob/bobEcc256Key.pem -A /code/ipsec-strongswan-confs/caEcc256Cert.pem
+alice# ./wolfssl-4.4.0-stable/examples/server/server -l TLS13-AES128-GCM-SHA256 -b -p 8080 -v 4 -f -c /code/ipsec-strongswan-confs/alice/aliceEcc256Cert.pem -k /code/ipsec-strongswan-confs/alice/aliceEcc256Key.pem -A /code/ipsec-strongswan-confs/caEcc256Cert.pem
+  bob# ./wolfssl-4.4.0-stable/examples/client/client -h 172.50.1.2 -p 8080 -v 4 -f -c /code/ipsec-strongswan-confs/bob/bobEcc256Cert.pem -k /code/ipsec-strongswan-confs/bob/bobEcc256Key.pem -A /code/ipsec-strongswan-confs/caEcc256Cert.pem
+  bob# ./wolfssl-4.4.0-stable/examples/client/client -Y -l TLS13-AES128-GCM-SHA256 -h 172.50.1.2 -p 8080 -v 4 -f -c /code/ipsec-strongswan-confs/bob/bobEcc256Cert.pem -k /code/ipsec-strongswan-confs/bob/bobEcc256Key.pem -A /code/ipsec-strongswan-confs/caEcc256Cert.pem
 
-alice# ./wolfssl-4.4.0-stable/examples/server/server -l TLS13-AES128-GCM-SHA256 -C 10 -b -p 8080 -v 4 -1 0 -f -c /code/ipsec-strongswan-confs/alice/aliceEcc256Cert.pem -k /code/ipsec-strongswan-confs/alice/aliceEcc256Key.pem -A /code/ipsec-strongswan-confs/caEcc256Cert.pem
-  bob# ./wolfssl-4.4.0-stable/examples/client/client -h 172.50.1.2 -p 8080 -b 10 -v 4 -1 0 -f -c /code/ipsec-strongswan-confs/bob/bobEcc256Cert.pem -k /code/ipsec-strongswan-confs/bob/bobEcc256Key.pem -A /code/ipsec-strongswan-confs/caEcc256Cert.pem
+# Handshake 10 times
+alice# ./wolfssl-4.4.0-stable/examples/server/server -l TLS13-AES128-GCM-SHA256 -C 10 -b -p 8080 -v 4 -f -c /code/ipsec-strongswan-confs/alice/aliceEcc256Cert.pem -k /code/ipsec-strongswan-confs/alice/aliceEcc256Key.pem -A /code/ipsec-strongswan-confs/caEcc256Cert.pem
+  bob# ./wolfssl-4.4.0-stable/examples/client/client -h 172.50.1.2 -p 8080 -b 10 -v 4 -f -c /code/ipsec-strongswan-confs/bob/bobEcc256Cert.pem -k /code/ipsec-strongswan-confs/bob/bobEcc256Key.pem -A /code/ipsec-strongswan-confs/caEcc256Cert.pem
 
 # Communication
-alice# ./wolfssl-4.4.0-stable/examples/server/server -l TLS13-AES128-GCM-SHA256 -B 104857600 -b -p 8080 -v 4 -1 0 -f -c /code/ipsec-strongswan-confs/alice/aliceEcc256Cert.pem -k /code/ipsec-strongswan-confs/alice/aliceEcc256Key.pem -A /code/ipsec-strongswan-confs/caEcc256Cert.pem
-  bob# ./wolfssl-4.4.0-stable/examples/client/client -h 172.50.1.2 -p 8080 -B 104857600 -v 4 -1 0 -f -c /code/ipsec-strongswan-confs/bob/bobEcc256Cert.pem -k /code/ipsec-strongswan-confs/bob/bobEcc256Key.pem -A /code/ipsec-strongswan-confs/caEcc256Cert.pem
+alice# ./wolfssl-4.4.0-stable/examples/server/server -l TLS13-AES128-GCM-SHA256 -B 104857600 -b -p 8080 -v 4 -f -c /code/ipsec-strongswan-confs/alice/aliceEcc256Cert.pem -k /code/ipsec-strongswan-confs/alice/aliceEcc256Key.pem -A /code/ipsec-strongswan-confs/caEcc256Cert.pem
+  bob# ./wolfssl-4.4.0-stable/examples/client/client -h 172.50.1.2 -p 8080 -B 104857600 -v 4 -f -c /code/ipsec-strongswan-confs/bob/bobEcc256Cert.pem -k /code/ipsec-strongswan-confs/bob/bobEcc256Key.pem -A /code/ipsec-strongswan-confs/caEcc256Cert.pem
 
 # Benchmark
 alice# ./wolfssl-4.4.0-stable/examples/benchmark/tls_bench -s -h 172.50.1.2 -P 8080 -l TLS13-AES128-GCM-SHA256 -p 16384 -S 52428800 -v
@@ -45,14 +46,14 @@ alice# ./wolfssl-4.4.0-stable/examples/benchmark/tls_bench -s -h 172.50.1.2 -P 8
 
 ```bash
 # Handshake
-alice# ./wolfssl-4.4.0-stable/examples/server/server -l ECDHE-ECDSA-AES128-GCM-SHA256 -b -p 8080 -v 3 -1 0 -f -c /code/ipsec-strongswan-confs/alice/aliceEcc256Cert.pem -k /code/ipsec-strongswan-confs/alice/aliceEcc256Key.pem -A /code/ipsec-strongswan-confs/caEcc256Cert.pem
-  bob# ./wolfssl-4.4.0-stable/examples/client/client -h 172.50.1.2 -p 8080 -v 3 -1 0 -f -c /code/ipsec-strongswan-confs/bob/bobEcc256Cert.pem -k /code/ipsec-strongswan-confs/bob/bobEcc256Key.pem -A /code/ipsec-strongswan-confs/caEcc256Cert.pem
+alice# ./wolfssl-4.4.0-stable/examples/server/server -l ECDHE-ECDSA-AES128-GCM-SHA256 -b -p 8080 -v 3 -f -c /code/ipsec-strongswan-confs/alice/aliceEcc256Cert.pem -k /code/ipsec-strongswan-confs/alice/aliceEcc256Key.pem -A /code/ipsec-strongswan-confs/caEcc256Cert.pem
+  bob# ./wolfssl-4.4.0-stable/examples/client/client -h 172.50.1.2 -p 8080 -v 3 -f -c /code/ipsec-strongswan-confs/bob/bobEcc256Cert.pem -k /code/ipsec-strongswan-confs/bob/bobEcc256Key.pem -A /code/ipsec-strongswan-confs/caEcc256Cert.pem
 ```
 
 ### DTLS 1.2
 
 ```bash
 # Handshake
-alice# ./wolfssl-4.4.0-stable/examples/server/server -l ECDHE-ECDSA-AES128-GCM-SHA256 -b -p 8080 -u -1 0 -f -c /code/ipsec-strongswan-confs/alice/aliceEcc256Cert.pem -k /code/ipsec-strongswan-confs/alice/aliceEcc256Key.pem -A /code/ipsec-strongswan-confs/caEcc256Cert.pem
-  bob# ./wolfssl-4.4.0-stable/examples/client/client -h 172.50.1.2 -p 8080 -u -1 0 -f -c /code/ipsec-strongswan-confs/bob/bobEcc256Cert.pem -k /code/ipsec-strongswan-confs/bob/bobEcc256Key.pem -A /code/ipsec-strongswan-confs/caEcc256Cert.pem
+alice# ./wolfssl-4.4.0-stable/examples/server/server -l ECDHE-ECDSA-AES128-GCM-SHA256 -b -p 8080 -u -f -c /code/ipsec-strongswan-confs/alice/aliceEcc256Cert.pem -k /code/ipsec-strongswan-confs/alice/aliceEcc256Key.pem -A /code/ipsec-strongswan-confs/caEcc256Cert.pem
+  bob# ./wolfssl-4.4.0-stable/examples/client/client -h 172.50.1.2 -p 8080 -u -f -c /code/ipsec-strongswan-confs/bob/bobEcc256Cert.pem -k /code/ipsec-strongswan-confs/bob/bobEcc256Key.pem -A /code/ipsec-strongswan-confs/caEcc256Cert.pem
 ```
