@@ -34,7 +34,7 @@ def process_macsec_handshake_pcap(pcap_filepath):
                 if len(eth.data) >= 134 - 14:
                     break
 
-    key_exchange_time = ret[-1][0]
+    key_exchange_time = ret[-1][0] - ret[13][0]
     total_time = ret[-1][0]
     total_packet_size = sum([pkt[1] for pkt in ret])
 
