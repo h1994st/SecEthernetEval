@@ -31,7 +31,7 @@ do
     # Activate MACsec handshake
     docker-compose exec -T bob /code/scripts/macsec_wpa_start.sh
 
-    sleep 5  # sleep 2 seconds
+    sleep 5  # sleep 5 seconds
     sudo pkill tcpdump
 
     # Stop hostapd and wpa_supplicant

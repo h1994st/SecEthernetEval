@@ -16,5 +16,6 @@ until macsec_devs=$(ip macsec show)
 do
     sleep 1
 done
+sleep 3
 
 echo "[MACsec] Done!"
