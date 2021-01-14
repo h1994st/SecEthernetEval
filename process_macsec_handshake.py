@@ -32,7 +32,6 @@ def process_macsec_handshake_pcap(pcap_filepath):
 
             if cnt >= 14:
                 if len(eth.data) >= 134 - 14:
-                    print(cnt)
                     break
 
     key_exchange_time = ret[-1][0]

@@ -7,24 +7,24 @@ import matplotlib.pyplot as plt
 
 
 def main():
-    x = ['TLS 1.3', 'TLS 1.2', 'DTLS 1.2', 'IPsec']
+    x = ['TLS 1.3', 'TLS 1.2', 'DTLS 1.2', 'IPsec', 'MACsec']
 
     N = len(x)
     width = 0.35
 
     # ./results/20210113
-    key_exchange_time_avgs = np.array([0.365878, 0.810486, 0.984765, 0.000831]) * 1000
-    key_exchange_time_stds = np.array([0.172562, 0.093401, 0.155039, 0.000105]) * 1000
+    key_exchange_time_avgs = np.array([0.365878, 0.810486, 0.984765, 0.000831, 3.270009]) * 1000
+    key_exchange_time_stds = np.array([0.172562, 0.093401, 0.155039, 0.000105, 0.111434]) * 1000
 
-    total_time_avgs = np.array([0.800180, 0.956309, 1.215186, 1.105013]) * 1000
-    total_time_stds = np.array([0.208733, 0.178613, 0.222742, 0.086478]) * 1000
+    total_time_avgs = np.array([0.800180, 0.956309, 1.215186, 1.105013, 3.270009]) * 1000
+    total_time_stds = np.array([0.208733, 0.178613, 0.222742, 0.086478, 0.111434]) * 1000
 
-    total_packet_size_avgs = [2036.5, 1666.1, 2142.05, 2769.1]
-    total_packet_size_stds = [0.921954, 1.135782, 1.160819, 1.044031]
+    total_packet_size_avgs = [2036.5, 1666.1, 2142.05, 2769.1, 5048.0]
+    total_packet_size_stds = [0.921954, 1.135782, 1.160819, 1.044031, 0.0]
 
     ind = np.arange(N)
 
-    plt.figure(figsize=(16, 7))
+    plt.figure(figsize=(18, 7))
     plt.rcParams.update({'font.size': 24})
 
     plt.subplot(1, 2, 1)
@@ -38,12 +38,12 @@ def main():
         error_kw=dict(elinewidth=6, ecolor='black'))
 
     for i in range(N):
+        # plt.text(
+        #     x=ind[i] - 0.3,
+        #     y=key_exchange_time_avgs[i] + key_exchange_time_stds[i] + 0.1,
+        #     s=str(round(key_exchange_time_avgs[i], 2)), size=18)
         plt.text(
-            x=ind[i] - 0.16,
-            y=key_exchange_time_avgs[i] + key_exchange_time_stds[i] + 0.1,
-            s=str(round(key_exchange_time_avgs[i], 2)), size=18)
-        plt.text(
-            x=ind[i] + width - 0.16,
+            x=ind[i] + width - 0.3,
             y=total_time_avgs[i] + total_time_stds[i] + 0.1,
             s=str(round(total_time_avgs[i], 2)), size=18)
 
@@ -51,7 +51,7 @@ def main():
     plt.xlabel('Protocols')
 
     plt.ylabel('Time (ms)')
-    plt.ylim(0, 1600)
+    plt.ylim(0, 3500)
 
     plt.legend(loc='lower center', ncol=2, bbox_to_anchor=(0.5, 1))
     plt.grid(True, axis='y', linestyle='--')
@@ -74,7 +74,7 @@ def main():
     plt.xlabel('Protocols')
 
     plt.ylabel('Size (bytes)')
-    plt.ylim(0, 3000)
+    plt.ylim(0, 5100)
 
     plt.legend(loc='lower center', ncol=2, bbox_to_anchor=(0.5, 1))
     plt.grid(True, axis='y', linestyle='--')
