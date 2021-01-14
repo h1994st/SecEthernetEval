@@ -12,7 +12,7 @@ DTLS_CIPHER=ECDHE-ECDSA-AES128-GCM-SHA256
 
 sudo echo "Start"
 
-# Run iperf3
+# Run server
 docker-compose exec -T alice /code/scripts/wolfssl_dtls_start_server.sh \
     $DTLS_VERSION $DTLS_CIPHER $N_TIMES
 

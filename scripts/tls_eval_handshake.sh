@@ -14,7 +14,7 @@ SERVER_IP_ADDR=172.50.1.2
 
 sudo echo "Start"
 
-# Run iperf3
+# Run server
 docker-compose exec -T alice /code/scripts/wolfssl_start_server.sh \
     $TLS_VERSION $TLS_CIPHER $N_TIMES
 
