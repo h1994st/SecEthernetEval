@@ -43,7 +43,7 @@ def process_tls12_ecc_handshake_pcap(pcap_filepath):
 
 
 def main(data_dir):
-    pcap_path_pattern = os.path.join(data_dir, 'dtls12_ecc_handshake_*.pcap')
+    pcap_path_pattern = os.path.join(data_dir, 'dtls_eval_handshake_v3_*.pcap')
     pcap_list = glob.glob(pcap_path_pattern)
 
     key_exchange_times = []
@@ -68,5 +68,3 @@ if __name__ == '__main__':
         sys.exit(1)
     data_dir = sys.argv[1]
     main(data_dir)
-
-

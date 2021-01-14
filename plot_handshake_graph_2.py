@@ -12,15 +12,15 @@ def main():
     N = len(x)
     width = 0.35
 
-    # ./results/20200816
-    key_exchange_time_avgs = np.array([0.0061, 0.0109, 0.0109, 0.0008]) * 1000
-    key_exchange_time_stds = np.array([0.0014, 0.0010, 0.0011, 0.00047]) * 1000
+    # ./results/20210113
+    key_exchange_time_avgs = np.array([0.365878, 0.810486, 0.984765, 0.000831]) * 1000
+    key_exchange_time_stds = np.array([0.172562, 0.093401, 0.155039, 0.000105]) * 1000
 
-    total_time_avgs = np.array([0.0113, 0.0144, 0.0145, 0.0119]) * 1000
-    total_time_stds = np.array([0.0015, 0.0013, 0.0012, 0.0008]) * 1000
+    total_time_avgs = np.array([0.800180, 0.956309, 1.215186, 1.105013]) * 1000
+    total_time_stds = np.array([0.208733, 0.178613, 0.222742, 0.086478]) * 1000
 
-    total_packet_size_avgs = [2045.9, 1649.9, 2126.4, 2769.0]
-    total_packet_size_stds = [0.8307, 1.0500, 0.9165, 1.1169]
+    total_packet_size_avgs = [2036.5, 1666.1, 2142.05, 2769.1]
+    total_packet_size_stds = [0.921954, 1.135782, 1.160819, 1.044031]
 
     ind = np.arange(N)
 
@@ -51,7 +51,7 @@ def main():
     plt.xlabel('Protocols')
 
     plt.ylabel('Time (ms)')
-    plt.ylim(0, 17.5)
+    plt.ylim(0, 1600)
 
     plt.legend(loc='lower center', ncol=2, bbox_to_anchor=(0.5, 1))
     plt.grid(True, axis='y', linestyle='--')

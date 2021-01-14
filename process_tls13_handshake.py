@@ -45,7 +45,7 @@ def process_tls13_ecc_handshake_pcap(pcap_filepath):
 
 
 def main(data_dir):
-    pcap_path_pattern = os.path.join(data_dir, 'tls13_ecc_handshake_*.pcap')
+    pcap_path_pattern = os.path.join(data_dir, 'tls_eval_handshake_v4_*.pcap')
     pcap_list = glob.glob(pcap_path_pattern)
 
     key_exchange_times = []
