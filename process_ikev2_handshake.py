@@ -11,7 +11,7 @@ import dpkt
 import numpy as np
 
 
-def process_tls12_ecc_handshake_pcap(pcap_filepath):
+def process_ipsec_ecc_handshake_pcap(pcap_filepath):
     assert os.path.exists(pcap_filepath)
     assert os.path.isfile(pcap_filepath)
 
@@ -50,7 +50,7 @@ def main(data_dir):
     total_times = []
     total_packet_sizes = []
     for pcap_filepath in pcap_list:
-        data = process_tls12_ecc_handshake_pcap(pcap_filepath)
+        data = process_ipsec_ecc_handshake_pcap(pcap_filepath)
         key_exchange_times.append(data[0])
         total_times.append(data[1])
         total_packet_sizes.append(data[2])
