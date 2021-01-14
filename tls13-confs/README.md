@@ -14,6 +14,19 @@ cd wolfssl-4.4.0-stable
 
 ## Start
 
+### Host Scripts
+
+```bash
+# TLS 1.3
+bash scripts/tls_eval_handshake.sh 20 <docker bridge> 4 TLS13-AES128-GCM-SHA256 <results dir>
+
+# TLS 1.2
+bash scripts/tls_eval_handshake.sh 20 <docker bridge> 3 ECDHE-ECDSA-AES128-GCM-SHA256 <results dir>
+
+# DTLS 1.2
+bash scripts/dtls_eval_handshake.sh 20 <docker bridge> <results dir>
+```
+
 ### iperf+wolfssl
 
 ```bash
