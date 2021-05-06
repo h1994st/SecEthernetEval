@@ -6,7 +6,8 @@ RUN apt -y update && \
                    libssl-dev libdbus-1-dev network-manager \
                    iproute2 bsdmainutils iperf3 \
                    strongswan libcharon-extra-plugins strongswan-pki \
-                   libgmp-dev iptables module-init-tools sudo && \
+                   libgmp-dev iptables module-init-tools sudo \
+                   netcat tcpdump can-utils libpcap-dev && \
     useradd -m seceth && \
     echo seceth:seceth | chpasswd && \
     cp /etc/sudoers /etc/sudoers.bak && \
