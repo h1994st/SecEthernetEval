@@ -1,0 +1,63 @@
+version: '2.4'
+
+services:
+  alice:
+    hostname: alice
+    image: h1994st/sec_eval
+    privileged: true
+    tty: true
+    environment:
+      MY_NAME: alice
+    networks:
+      testnet:
+        ipv4_address: 172.50.1.2
+    volumes:
+      - .:/code
+      - /var/run/dbus:/var/run/dbus
+    mac_address: 02:42:ac:11:00:02
+  bob:
+    hostname: bob
+    image: h1994st/sec_eval
+    privileged: true
+    tty: true
+    environment:
+      MY_NAME: bob
+    networks:
+      testnet:
+        ipv4_address: 172.50.1.3
+    volumes:
+      - .:/code
+      - /var/run/dbus:/var/run/dbus
+    mac_address: 02:42:ac:11:00:03
+  charlie:
+    hostname: charlie
+    image: h1994st/sec_eval
+    privileged: true
+    tty: true
+    environment:
+      MY_NAME: charlie
+    networks:
+      testnet:
+        ipv4_address: 172.50.1.4
+    volumes:
+      - .:/code
+      - /var/run/dbus:/var/run/dbus
+    mac_address: 02:42:ac:11:00:04
+  # authenticator:
+  #   hostname: authenticator
+  #   image: h1994st/sec_eval
+  #   privileged: true
+  #   tty: true
+  #   environment:
+  #     MY_NAME: authenticator
+  #   volumes:
+  #     - .:/code
+  #     - /var/run/dbus:/var/run/dbus
+  #   mac_address: 02:42:ac:11:00:01
+
+networks:
+  testnet:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.50.1.0/24
