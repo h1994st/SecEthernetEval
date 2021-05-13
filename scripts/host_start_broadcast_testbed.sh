@@ -9,6 +9,8 @@ docker run -it -d \
     --mac-address 02:42:ac:11:00:01 \
     --name=authenticator --hostname=authenticator \
     --privileged \
+    --cpus="0.06" \
+    --cpuset-cpus=6 \
     h1994st/sec_eval
 
 # Link Docker network namespaces to the system

@@ -14,6 +14,9 @@ services:
     volumes:
       - .:/code
       - /var/run/dbus:/var/run/dbus
+    cpuset: '3'
+    cpus: '0.01'
+    mem_limit: '50MB'
     mac_address: 02:42:ac:11:00:02
   bob:
     hostname: bob
@@ -28,6 +31,9 @@ services:
     volumes:
       - .:/code
       - /var/run/dbus:/var/run/dbus
+    cpuset: '4'
+    cpus: '0.01'
+    mem_limit: '50MB'
     mac_address: 02:42:ac:11:00:03
   # charlie:
   #   hostname: charlie
@@ -42,6 +48,9 @@ services:
   #   volumes:
   #     - .:/code
   #     - /var/run/dbus:/var/run/dbus
+  #   cpuset: '5'
+  #   cpus: '0.01'
+  #   mem_limit: '50MB'
   #   mac_address: 02:42:ac:11:00:04
   # authenticator:
   #   hostname: authenticator
