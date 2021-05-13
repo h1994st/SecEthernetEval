@@ -75,3 +75,14 @@ tc qdisc del dev eth0 root
 alice# iperf3 -s -d -p 8080
   bob# iperf3 -c 172.50.1.2 -p 8080 -i 60 -4 -n 104857600 -b 0
 ```
+
+## Performance Analysis
+
+```bash
+# collect performance profile for 100 seconds
+sudo perf record -o <name.data> -a -F 199 -g -e cycles -G <Docker cgroup> -- sleep 100
+sudo chown h1994st:h1994st <name.data>
+
+# generate flamegraph
+./results/perf_flame_graph/gen_svg.sh <name>
+```
