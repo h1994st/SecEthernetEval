@@ -93,3 +93,8 @@ sudo chown h1994st:h1994st <name.data>
 # generate flamegraph
 ./results/perf_flame_graph/gen_svg.sh <name>
 ```
+
+References:
+
+- <http://www.brendangregg.com/Slides/LISA2017_Container_Performance_Analysis.pdf>
+- <http://www.brendangregg.com/blog/2014-11-09/differential-flame-graphs.html>
