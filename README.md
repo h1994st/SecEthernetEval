@@ -79,8 +79,15 @@ alice# iperf3 -s -d -p 8080
 ## Performance Analysis
 
 ```bash
+# inspect Docker cgroup
+systemd-cgtop
+# or
+# the following command outputs Container ID
+# ==> `docker/<Container Id>` is what we want
+docker inspect -f "{{.Id}}" <Docker container name>
+
 # collect performance profile for 100 seconds
-sudo perf record -o <name.data> -a -F 199 -g -e cycles -G <Docker cgroup> -- sleep 100
+sudo perf record -o <name.data> -a -F 199 -g -e cycles -G docker/<Container Id> -- sleep 100
 sudo chown h1994st:h1994st <name.data>
 
 # generate flamegraph
