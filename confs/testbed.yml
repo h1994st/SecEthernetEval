@@ -29,20 +29,20 @@ services:
       - .:/code
       - /var/run/dbus:/var/run/dbus
     mac_address: 02:42:ac:11:00:03
-  charlie:
-    hostname: charlie
-    image: h1994st/sec_eval
-    privileged: true
-    tty: true
-    environment:
-      MY_NAME: charlie
-    networks:
-      testnet:
-        ipv4_address: 172.50.1.4
-    volumes:
-      - .:/code
-      - /var/run/dbus:/var/run/dbus
-    mac_address: 02:42:ac:11:00:04
+  # charlie:
+  #   hostname: charlie
+  #   image: h1994st/sec_eval
+  #   privileged: true
+  #   tty: true
+  #   environment:
+  #     MY_NAME: charlie
+  #   networks:
+  #     testnet:
+  #       ipv4_address: 172.50.1.4
+  #   volumes:
+  #     - .:/code
+  #     - /var/run/dbus:/var/run/dbus
+  #   mac_address: 02:42:ac:11:00:04
   # authenticator:
   #   hostname: authenticator
   #   image: h1994st/sec_eval

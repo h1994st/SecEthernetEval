@@ -15,13 +15,13 @@ docker run -it -d \
 echo "Link Docker network namespaces to the system"
 alice_pid="$(docker inspect -f '{{.State.Pid}}' secetherneteval_alice_1)"
 bob_pid="$(docker inspect -f '{{.State.Pid}}' secetherneteval_bob_1)"
-charlie_pid="$(docker inspect -f '{{.State.Pid}}' secetherneteval_charlie_1)"
+# charlie_pid="$(docker inspect -f '{{.State.Pid}}' secetherneteval_charlie_1)"
 auth_pid="$(docker inspect -f '{{.State.Pid}}' authenticator)"
 
 echo "PIDs:"
 echo "  Alice: "$alice_pid
 echo "  Bob: "$bob_pid
-echo "  Charlie: "$charlie_pid
+# echo "  Charlie: "$charlie_pid
 echo "  Authenticator: "$auth_pid
 
 # this is needed, as the directory /var/run/netns may not exist
@@ -30,7 +30,7 @@ sudo ip netns del netns0
 
 sudo ln -sf /proc/$alice_pid/ns/net /var/run/netns/alice
 sudo ln -sf /proc/$bob_pid/ns/net /var/run/netns/bob
-sudo ln -sf /proc/$charlie_pid/ns/net /var/run/netns/charlie
+# sudo ln -sf /proc/$charlie_pid/ns/net /var/run/netns/charlie
 sudo ln -sf /proc/$auth_pid/ns/net /var/run/netns/authenticator
 
 echo "Network namespaces:"
@@ -48,7 +48,7 @@ done
 # Configure virtual interfaces
 ALICE_EXEC="sudo ip netns exec alice"
 BOB_EXEC="sudo ip netns exec bob"
-CHARLIE_EXEC="sudo ip netns exec charlie"
+# CHARLIE_EXEC="sudo ip netns exec charlie"
 AUTH_EXEC="sudo ip netns exec authenticator"
 
 echo "Create a bridge device in the authenticator namespace"
@@ -68,5 +68,5 @@ $AUTH_EXEC ip link
 echo "Test the connections"
 echo "Ping Bob from Alice"
 $ALICE_EXEC ping -c 1 172.50.1.3
-echo "Ping Charlie from Alice"
-$ALICE_EXEC ping -c 1 172.50.1.4
+# echo "Ping Charlie from Alice"
+# $ALICE_EXEC ping -c 1 172.50.1.4
