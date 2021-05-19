@@ -38,8 +38,15 @@ def plot_throughput(no_protection_latency, protection_latency):
 
 
 def process_data(data_dir):
-    # Load send.txt
     send_data_path = os.path.join(data_dir, 'send.txt')
+    if not os.path.exists(send_data_path):
+        return []
+
+    recv_data_path = os.path.join(data_dir, 'recv.txt')
+    if not os.path.exists(recv_data_path):
+        return []
+
+    # Load send.txt
     send_data = []
     with open(send_data_path, 'r') as fp:
         for line in fp:
@@ -47,7 +54,6 @@ def process_data(data_dir):
     send_data = np.array(send_data) * 1000
 
     # Load recv.txt
-    recv_data_path = os.path.join(data_dir, 'recv.txt')
     recv_data = []
     with open(recv_data_path, 'r') as fp:
         for line in fp:
@@ -67,7 +73,8 @@ def main(no_protection_data_dir, protection_data_dir):
     no_protection_latency = process_data(no_protection_data_dir)
     protection_latency = process_data(protection_data_dir)
 
-    assert len(no_protection_latency) == len(protection_latency)
+    if len(no_protection_latency) != len(protection_latency):
+        return
 
     plot_throughput(no_protection_latency, protection_latency)
 
