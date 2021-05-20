@@ -62,10 +62,16 @@ def process_data(data_dir):
     print("send_data: len=%d" % len(send_data))
     print("recv_data: len=%d" % len(recv_data))
 
+    max_recv_index = max(recv_data.keys())
+    print("max_recv_index: %d" % max_recv_index)
+
     latency = []
     num_loss = 0
 
     for i in send_data:
+        if i > max_recv_index:
+            continue
+
         if i not in recv_data:
             num_loss += 1
             continue
@@ -76,7 +82,8 @@ def process_data(data_dir):
     print("Latency (s): %f (avg), %f (std dev)" % (
         np.mean(latency), np.std(latency)))
     print("  - min: %f, max: %f" % (np.min(latency), np.max(latency)))
-    print("#Loss: %d" % num_loss)
+    num = len(latency) + num_loss
+    print("#Loss: %d (%f)" % (num_loss, float(num_loss) / num))
 
     return latency
 
