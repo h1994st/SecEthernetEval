@@ -18,9 +18,10 @@ def plot_throughput(protection_latency):
 
     plt.figure(figsize=(13, 7))
     plt.rcParams.update({'font.size': 24})
-    plt.plot(x, protection_latency, 'x', label='protected', color='r')
+    plt.plot(x, protection_latency, 'x', label='w/ protection', color='r')
     plt.axhline(
-        y=avgval, linestyle='--', label='protected avg. = %f' % avgval, color='r')
+        y=avgval, linestyle='--',
+        label='w/ protection avg. = %f' % avgval, color='r')
 
     plt.ylabel('Latency (s)')
     # plt.ylim(0, (avgval) + 0.05)
