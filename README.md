@@ -13,6 +13,10 @@ docker pull h1994st/sec_eval
 
 #### CHANGELOG
 
+- 0.4: install `netcat`, `tcpdump`, `can-utils`, and `libpcap`
+- 0.3.1: add IPsec certificate into the container
+- 0.3: finalize `iperf3` with wolfSSL
+- 0.2.2: add a modified version of `iperf3` that uses wolfSSL
 - 0.2.1: fix a bug in `hostapd` so that `CONFIG_L2_PACKET` is enabled, and `l2_packet_linux.c` is included in the program
 - 0.2: include `hostapd`
 - 0.1: integrate WolfSSL v4.4.0, wpa_supplicant 2.9, strongSwan and iperf3
