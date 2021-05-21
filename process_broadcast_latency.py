@@ -11,7 +11,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def plot_throughput(no_protection_latency, protection_latency):
+def plot_latency(no_protection_latency, protection_latency):
     n = len(no_protection_latency)
     x = np.arange(1, n + 1)
     avg1 = np.mean(no_protection_latency)
@@ -67,24 +67,33 @@ def process_data(data_dir):
     print(data_dir)
     print("Latency (ms): %f (avg), %f (std dev)" % (
         np.mean(latency), np.std(latency)))
+    print("  - min: %f, max: %f" % (np.min(latency), np.max(latency)))
 
     return latency
 
 
 def main(no_protection_data_dir, protection_data_dir):
     no_protection_latency = process_data(no_protection_data_dir)
+
+    if protection_data_dir is None:
+        return
+
     protection_latency = process_data(protection_data_dir)
 
     if len(no_protection_latency) != len(protection_latency):
         return
 
-    plot_throughput(no_protection_latency, protection_latency)
+    plot_latency(no_protection_latency, protection_latency)
 
 
 if __name__ == '__main__':
-    if len(sys.argv) < 3:
+    if len(sys.argv) < 2:
         print('Insufficient arguments!')
         sys.exit(1)
     no_protection_data_dir = sys.argv[1]
-    protection_data_dir = sys.argv[2]
+
+    protection_data_dir = None
+    if len(sys.argv) > 2:
+        protection_data_dir = sys.argv[2]
+
     main(no_protection_data_dir, protection_data_dir)

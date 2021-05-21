@@ -11,7 +11,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def plot_throughput(protection_latency):
+def plot_latency(protection_latency):
     n = len(protection_latency)
     x = np.arange(1, n + 1)
     avgval = np.mean(protection_latency)
@@ -96,7 +96,7 @@ def process_data(data_dir):
 def main(protection_data_dir):
     protection_latency = process_data(protection_data_dir)
 
-    plot_throughput(protection_latency)
+    plot_latency(protection_latency)
 
 
 if __name__ == '__main__':
