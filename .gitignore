@@ -9,6 +9,7 @@ udp_client
 udp_server
 tesla_udp_client
 tesla_udp_server
+libtesla.so
 
 # Created by https://www.toptal.com/developers/gitignore/api/clion+all,linux,macos,windows,sublimetext
 # Edit at https://www.toptal.com/developers/gitignore?templates=clion+all,linux,macos,windows,sublimetext

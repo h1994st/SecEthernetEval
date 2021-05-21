@@ -23,7 +23,7 @@ def plot_throughput(protection_latency):
         y=avgval, linestyle='--',
         label='w/ protection avg. = %f' % avgval, color='r')
 
-    plt.ylabel('Latency (s)')
+    plt.ylabel('Latency (ms)')
     # plt.ylim(0, (avgval) + 0.05)
 
     plt.legend()
@@ -77,10 +77,14 @@ def process_data(data_dir):
             num_loss += 1
             continue
 
-        latency.append(recv_data[i] - send_data[i])
+        diff = recv_data[i] - send_data[i]
+        latency.append(diff)
+
+    # s --> ms
+    latency = np.array(latency) * 1000
 
     print(data_dir)
-    print("Latency (s): %f (avg), %f (std dev)" % (
+    print("Latency (ms): %f (avg), %f (std dev)" % (
         np.mean(latency), np.std(latency)))
     print("  - min: %f, max: %f" % (np.min(latency), np.max(latency)))
     num = len(latency) + num_loss
