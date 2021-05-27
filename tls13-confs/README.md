@@ -6,10 +6,11 @@
 wget https://github.com/wolfSSL/wolfssl/archive/v4.4.0-stable.tar.gz
 tar -zxf v4.4.0-stable.tar.gz
 cd wolfssl-4.4.0-stable
-./autogen.sh && \
-    ./configure --enable-tls13 --enable-hc128 --enable-rabbit --enable-aesccm \
-                --enable-dtls --enable-dtls-mtu && \
-    make && make install
+./autogen.sh
+./configure --enable-tls13 --enable-tlsv10 --enable-oldtls --enable-dtls \
+            --enable-dtls-mtu --enable-hc128 --enable-rabbit \
+            --enable-aesccm --enable-opensslall && \
+make && make install
 ```
 
 ## Start

@@ -20,8 +20,9 @@ RUN wget https://github.com/wolfSSL/wolfssl/archive/v4.4.0-stable.tar.gz && \
     tar -zxf v4.4.0-stable.tar.gz && \
     cd wolfssl-4.4.0-stable && \
     ./autogen.sh && \
-    ./configure --enable-tls13 --enable-tlsv10 --enable-oldtls --enable-dtls --enable-dtls-mtu \
-                --enable-hc128 --enable-rabbit --enable-aesccm && \
+    ./configure --enable-tls13 --enable-tlsv10 --enable-oldtls --enable-dtls \
+                --enable-dtls-mtu --enable-hc128 --enable-rabbit \
+                --enable-aesccm --enable-opensslall && \
     make && make install && \
     cd /home/seceth && \
     chown -R seceth:seceth ./wolfssl-4.4.0-stable && \
@@ -54,7 +55,7 @@ RUN wget https://w1.fi/releases/hostapd-2.9.tar.gz && \
 RUN git clone https://github.com/h1994st/iperf.git iperf-wolfssl --depth=1 && \
     cd iperf-wolfssl && \
     ./bootstrap.sh && \
-    ./configure LIBS=-lwolfssl && make && \
+    ./configure --without-openssl LIBS=-lwolfssl && make && \
     cd /home/seceth && \
     chown -R seceth:seceth ./iperf-wolfssl
 

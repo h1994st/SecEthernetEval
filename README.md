@@ -13,6 +13,7 @@ docker pull h1994st/sec_eval
 
 #### CHANGELOG
 
+- 0.4.1: enable the OpenSSL compability layer of wolfSSL and rebuild `iperf3` with wolfSSL
 - 0.4: install `netcat`, `tcpdump`, `can-utils`, and `libpcap`
 - 0.3.1: add IPsec certificate into the container
 - 0.3: finalize `iperf3` with wolfSSL
