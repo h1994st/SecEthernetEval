@@ -7,7 +7,9 @@ RUN apt -y update && \
                    iproute2 bsdmainutils iperf3 \
                    strongswan libcharon-extra-plugins strongswan-pki \
                    libgmp-dev iptables module-init-tools sudo \
-                   netcat tcpdump can-utils libpcap-dev && \
+                   netcat tcpdump can-utils libpcap-dev \
+                   libpci-dev libpcap-dev libsndfile-dev libjack-dev \
+                   libasound2-dev libglib2.0-dev cmake && \
     useradd -m seceth && \
     echo seceth:seceth | chpasswd && \
     cp /etc/sudoers /etc/sudoers.bak && \
@@ -58,6 +60,14 @@ RUN git clone https://github.com/h1994st/iperf.git iperf-wolfssl --depth=1 && \
     ./configure --without-openssl LIBS=-lwolfssl && make && \
     cd /home/seceth && \
     chown -R seceth:seceth ./iperf-wolfssl
+
+# OpenAvnu
+# The network driver igb_avb is built through `cd lib/igb_avb && make all` and installed through `sudo ./startup.sh` (not added here)
+RUN git clone https://github.com/Avnu/OpenAvnu.git && cd OpenAvnu && \
+    git submodule init && git submodule update && \
+    make all && \
+    cd /home/seceth && \
+    chown -R seceth:seceth ./OpenAvnu
 
 # Copy certificates
 COPY ./ipsec-strongswan-confs/alice/aliceRsaKey.pem /etc/ipsec.d/private
