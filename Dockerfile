@@ -8,6 +8,7 @@ RUN apt -y update && \
                    strongswan libcharon-extra-plugins strongswan-pki \
                    libgmp-dev iptables module-init-tools sudo \
                    netcat tcpdump can-utils libpcap-dev \
+                   net-tools iputils-ping \
                    # (requirements of OpenAvnu)
                    # libpci-dev libpcap-dev libsndfile-dev libjack-dev \
                    # libasound2-dev libglib2.0-dev \
@@ -76,7 +77,8 @@ RUN git clone https://github.com/h1994st/iperf.git iperf-wolfssl --depth=1 && \
 # vsomeip
 RUN git clone https://github.com/GENIVI/vsomeip.git && \
     cd vsomeip && git checkout 3.1.20.3 && \
-    mkdir build && cd build && cmake .. && make && sudo make install && \
+    mkdir build && cd build && cmake -DENABLE_SIGNAL_HANDLING=1 .. && \
+    make && sudo make install && \
     cd ./examples && make && \
     cd /home/seceth && \
     chown -R seceth:seceth ./vsomeip
