@@ -1,15 +1,19 @@
 FROM ubuntu:18.04
 
 RUN apt -y update && \
-    apt install -y vim wget git autoconf libtool make apt-utils pkg-config \
+    apt install -y vim wget git autoconf libtool make cmake apt-utils pkg-config \
                    libpq-dev libnl-3-dev libnl-genl-3-dev libnl-route-3-dev \
                    libssl-dev libdbus-1-dev network-manager \
                    iproute2 bsdmainutils iperf3 \
                    strongswan libcharon-extra-plugins strongswan-pki \
                    libgmp-dev iptables module-init-tools sudo \
                    netcat tcpdump can-utils libpcap-dev \
-                   libpci-dev libpcap-dev libsndfile-dev libjack-dev \
-                   libasound2-dev libglib2.0-dev cmake && \
+                   # (requirements of OpenAvnu)
+                   # libpci-dev libpcap-dev libsndfile-dev libjack-dev \
+                   # libasound2-dev libglib2.0-dev \
+                   # (requirements of vsomeip)
+                   libboost-system-dev libboost-thread-dev libboost-log-dev \
+                   && \
     useradd -m seceth && \
     echo seceth:seceth | chpasswd && \
     cp /etc/sudoers /etc/sudoers.bak && \
@@ -63,11 +67,19 @@ RUN git clone https://github.com/h1994st/iperf.git iperf-wolfssl --depth=1 && \
 
 # OpenAvnu
 # The network driver igb_avb is built through `cd lib/igb_avb && make all` and installed through `sudo ./startup.sh` (not added here)
-RUN git clone https://github.com/Avnu/OpenAvnu.git && cd OpenAvnu && \
-    git submodule init && git submodule update && \
-    make all && \
+# RUN git clone https://github.com/Avnu/OpenAvnu.git && cd OpenAvnu && \
+#     git submodule init && git submodule update && \
+#     make all && \
+#     cd /home/seceth && \
+#     chown -R seceth:seceth ./OpenAvnu
+
+# vsomeip
+RUN git clone https://github.com/GENIVI/vsomeip.git && \
+    cd vsomeip && git checkout 3.1.20.3 && \
+    mkdir build && cd build && cmake .. && make && sudo make install && \
+    cd ./examples && make && \
     cd /home/seceth && \
-    chown -R seceth:seceth ./OpenAvnu
+    chown -R seceth:seceth ./vsomeip
 
 # Copy certificates
 COPY ./ipsec-strongswan-confs/alice/aliceRsaKey.pem /etc/ipsec.d/private
