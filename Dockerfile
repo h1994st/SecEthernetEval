@@ -78,10 +78,11 @@ RUN git clone https://github.com/h1994st/iperf.git iperf-wolfssl --depth=1 && \
 RUN git clone https://github.com/GENIVI/vsomeip.git && \
     cd vsomeip && git checkout 3.1.20.3 && \
     mkdir build && cd build && cmake -DENABLE_SIGNAL_HANDLING=1 .. && \
-    make && sudo make install && \
+    make && make install && \
     cd ./examples && make && \
     cd /home/seceth && \
-    chown -R seceth:seceth ./vsomeip
+    chown -R seceth:seceth ./vsomeip && \
+    ldconfig
 
 # Copy certificates
 COPY ./ipsec-strongswan-confs/alice/aliceRsaKey.pem /etc/ipsec.d/private
