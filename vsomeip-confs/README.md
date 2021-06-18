@@ -5,7 +5,7 @@
 ```
 # on both containers
 sudo ldconfig
-sudo route add -nv 224.224.224.245 dev
+sudo route add -nv 224.224.224.245 dev eth0
 # or ./setup.sh
 ```
 
