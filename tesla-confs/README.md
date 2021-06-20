@@ -2,8 +2,8 @@
 
 ## Setup
 
-1. Build Evaluation Applications on Host Machine
-2. Copy `tesla_udp_client`, `tesla_udp_server`, and `libtesla.so` to the rood of `SecEthernetEval`
+1. Build Evaluation Applications on host machine
+2. Copy `tesla_udp_client`, `tesla_udp_server`, and `libtesla.so` to the root of `SecEthernetEval`
     - TODO: better compile these applications while building the Docker container
 3. Copy `libtesla.so` to `/usr/local/lib`: `sudo cp libtesla.so /usr/local/lib`
 4. Enter the Docker container and refresh the dynamic linker: `sudo ldconfig`
