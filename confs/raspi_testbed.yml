@@ -1,0 +1,33 @@
+version: '2.4'
+
+services:
+  alice:
+    hostname: alice
+    image: h1994st/sec_eval
+    privileged: true
+    tty: true
+    environment:
+      MY_NAME: alice
+    network_mode: none
+    volumes:
+      - .:/code
+      - /var/run/dbus:/var/run/dbus
+    cpuset: '3'
+    # cpus: '0.01'
+    # mem_limit: '50MB'
+    # mac_address: 02:42:ac:11:00:02
+  bob:
+    hostname: bob
+    image: h1994st/sec_eval
+    privileged: true
+    tty: true
+    environment:
+      MY_NAME: bob
+    network_mode: none
+    volumes:
+      - .:/code
+      - /var/run/dbus:/var/run/dbus
+    cpuset: '4'
+    # cpus: '0.01'
+    # mem_limit: '50MB'
+    # mac_address: 02:42:ac:11:00:03
