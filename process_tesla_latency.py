@@ -34,6 +34,27 @@ def plot_latency(protection_latency):
     # plt.savefig('throughput_figure.png')
 
 
+def plot_cdf(protection_latency):
+    # H, X1 = np.histogram(protection_latency, bins=10, normed=True)
+    # dx = X1[1] - X1[0]
+    # F1 = np.cumsum(H)*dx
+
+    N = len(protection_latency)
+    X2 = np.sort(protection_latency)
+    F2 = np.array(range(N))/float(N)
+
+    plt.rcParams.update({'font.size': 12})
+
+    # plt.plot(X1[1:], F1)
+    plt.plot(X2, F2)
+
+    plt.xlabel('Latency (ms)')
+    plt.grid(True, axis='x', linestyle='--')
+    plt.tight_layout()
+
+    plt.show()
+
+
 def process_data(data_dir):
     send_data_path = os.path.join(data_dir, 'send.txt')
     if not os.path.exists(send_data_path):
@@ -90,13 +111,21 @@ def process_data(data_dir):
     num = len(latency) + num_loss
     print("#Loss: %d (%f)" % (num_loss, float(num_loss) / num))
 
+    num1 = len(latency[latency < np.mean(latency)])
+    total1 = len(latency)
+    print('# < avg.: %d' % num1)
+    print('#elements: %d' % total1)
+    print('percentage: %f' % (float(num1) / float(total1)))
+    print('mean: %f' % np.mean(latency[latency < np.mean(latency)]))
+
     return latency
 
 
 def main(protection_data_dir):
     protection_latency = process_data(protection_data_dir)
 
-    plot_latency(protection_latency)
+    plot_cdf(protection_latency)
+    # plot_latency(protection_latency)
 
 
 if __name__ == '__main__':

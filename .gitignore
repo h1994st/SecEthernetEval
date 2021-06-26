@@ -7,8 +7,24 @@ docker-compose.yml
 # CAN over UDP
 udp_client
 udp_server
+
+udp_client_raw
+udp_server_raw
+
 tesla_udp_client
 tesla_udp_server
+
+# LiDAR UDP replay
+lidar_udp_client
+lidar_udp_server
+
+lidar_udp_client_raw
+lidar_udp_server_raw
+
+tesla_lidar_udp_client
+tesla_lidar_udp_server
+
+# TESLA
 libtesla.so
 
 # lwip

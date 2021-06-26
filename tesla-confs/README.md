@@ -35,7 +35,7 @@ ldd /code/tesla_udp_client
 Run `tesla_udp_client` on `alice` at first. Then, run `tesla_udp_server` on `bob`.
 
 ```bash
-alice# sudo ./tesla_udp_client -b -f /code/data/privkey.pem /code/data/can_frames.pcap
+alice# ./tesla_udp_client -b -f /code/data/privkey.pem /code/data/can_frames.pcap
 
   bob# ./tesla_udp_server /code/data/pubkey.pem
 ```

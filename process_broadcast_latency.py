@@ -62,7 +62,7 @@ def process_data(data_dir):
             recv_data.append(float(line.strip().split(': ')[0]))
     recv_data = np.array(recv_data) * 1000
 
-    latency = recv_data - send_data
+    latency = recv_data[:1000] - send_data[:1000]
 
     print(data_dir)
     print("Latency (ms): %f (avg), %f (std dev)" % (
