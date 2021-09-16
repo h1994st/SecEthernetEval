@@ -4,6 +4,9 @@
 # docker-compose.yml
 docker-compose.yml
 
+# Benchmark
+bench_*
+
 # CAN over UDP
 udp_client
 udp_server
