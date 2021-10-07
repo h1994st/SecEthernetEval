@@ -9,7 +9,7 @@ cd wolfssl-4.4.0-stable
 ./autogen.sh
 ./configure --enable-tls13 --enable-tlsv10 --enable-oldtls --enable-dtls \
             --enable-dtls-mtu --enable-hc128 --enable-rabbit \
-            --enable-aesccm --enable-opensslall && \
+            --enable-aesccm --enable-opensslall --enable-keygen && \
 make && make install
 ```
 
