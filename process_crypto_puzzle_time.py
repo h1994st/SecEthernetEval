@@ -27,8 +27,8 @@ def plot_hardness_vs_time(time_data_avgs, time_data_stds):
     plt.plot(x, time_data_avgs, linestyle='', marker='o', label='data')
     plt.plot(x2, y2, label='fitted curve')
 
-    plt.xlabel('Hardness Level')
-    plt.ylabel('Time (ms)')
+    plt.xlabel('Hardness Level, k')
+    plt.ylabel('Penalty Time, p (ms)')
     # plt.ylim(0, 17.5)
 
     plt.legend()
