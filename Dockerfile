@@ -23,16 +23,30 @@ RUN apt -y update && \
 WORKDIR /home/seceth
 # wolfSSL
 # https://github.com/wolfSSL/wolfssl/archive/v4.4.0-stable.tar.gz
-RUN wget https://github.com/wolfSSL/wolfssl/archive/v4.4.0-stable.tar.gz && \
-    tar -zxf v4.4.0-stable.tar.gz && \
-    cd wolfssl-4.4.0-stable && \
+# RUN wget https://github.com/wolfSSL/wolfssl/archive/v4.4.0-stable.tar.gz && \
+#     tar -zxf v4.4.0-stable.tar.gz && \
+#     cd wolfssl-4.4.0-stable && \
+#     ./autogen.sh && \
+#     ./configure --enable-tls13 --enable-tlsv10 --enable-oldtls --enable-dtls \
+#                 --enable-dtls-mtu --enable-hc128 --enable-rabbit \
+#                 --enable-aesccm --enable-opensslall --enable-keygen && \
+#     make && make install && \
+#     cd /home/seceth && \
+#     chown -R seceth:seceth ./wolfssl-4.4.0-stable && \
+#     ldconfig
+
+# https://github.com/wolfSSL/wolfssl.git
+# commit 8c178118a40d289aa573aeacf98c656a73024f5a
+RUN git clone https://github.com/wolfSSL/wolfssl.git && \
+    cd wolfssl && \
+    git checkout 8c178118a40d289aa573aeacf98c656a73024f5a && \
     ./autogen.sh && \
     ./configure --enable-tls13 --enable-tlsv10 --enable-oldtls --enable-dtls \
                 --enable-dtls-mtu --enable-hc128 --enable-rabbit \
-                --enable-aesccm --enable-opensslall && \
+                --enable-aesccm --enable-opensslall --enable-keygen && \
     make && make install && \
     cd /home/seceth && \
-    chown -R seceth:seceth ./wolfssl-4.4.0-stable && \
+    chown -R seceth:seceth ./wolfssl && \
     ldconfig
 
 # MACsec
