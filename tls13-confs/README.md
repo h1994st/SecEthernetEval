@@ -14,7 +14,8 @@ git checkout 8c178118a40d289aa573aeacf98c656a73024f5a
 ./autogen.sh
 ./configure --enable-tls13 --enable-tlsv10 --enable-oldtls --enable-dtls \
             --enable-dtls-mtu --enable-hc128 --enable-rabbit \
-            --enable-aesccm --enable-opensslall --enable-keygen && \
+            --enable-aesccm --enable-opensslall --enable-keygen \
+            --enable-sp-math-all && \
 make && make install
 ```
 

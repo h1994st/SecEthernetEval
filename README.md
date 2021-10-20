@@ -13,6 +13,7 @@ docker pull h1994st/sec_eval
 
 #### CHANGELOG
 
+- 0.5.2: update wolfSSL library to commit `e5caf5124cf971553933b9c85cfabb6b5027b884`
 - 0.5.1: update wolfSSL library to commit `8c178118a40d289aa573aeacf98c656a73024f5a`
 - 0.5: include `vsomeip`
 - 0.4.1: enable the OpenSSL compability layer of wolfSSL and rebuild `iperf3` with wolfSSL

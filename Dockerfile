@@ -36,14 +36,15 @@ WORKDIR /home/seceth
 #     ldconfig
 
 # https://github.com/wolfSSL/wolfssl.git
-# commit 8c178118a40d289aa573aeacf98c656a73024f5a
+# commit e5caf5124cf971553933b9c85cfabb6b5027b884
 RUN git clone https://github.com/wolfSSL/wolfssl.git && \
     cd wolfssl && \
-    git checkout 8c178118a40d289aa573aeacf98c656a73024f5a && \
+    git checkout e5caf5124cf971553933b9c85cfabb6b5027b884 && \
     ./autogen.sh && \
     ./configure --enable-tls13 --enable-tlsv10 --enable-oldtls --enable-dtls \
                 --enable-dtls-mtu --enable-hc128 --enable-rabbit \
-                --enable-aesccm --enable-opensslall --enable-keygen && \
+                --enable-aesccm --enable-opensslall --enable-keygen \
+                --enable-sp-math-all && \
     make && make install && \
     cd /home/seceth && \
     chown -R seceth:seceth ./wolfssl && \
