@@ -44,7 +44,7 @@ RUN git clone https://github.com/wolfSSL/wolfssl.git && \
     ./configure --enable-tls13 --enable-tlsv10 --enable-oldtls --enable-dtls \
                 --enable-dtls-mtu --enable-hc128 --enable-rabbit \
                 --enable-aesccm --enable-opensslall --enable-keygen \
-                --enable-sp-math-all && \
+                --enable-sp-math-all CFLAGS=-DWOLFSSL_PUBLIC_MP && \
     make && make install && \
     cd /home/seceth && \
     chown -R seceth:seceth ./wolfssl && \

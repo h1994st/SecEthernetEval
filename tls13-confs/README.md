@@ -15,7 +15,7 @@ git checkout 8c178118a40d289aa573aeacf98c656a73024f5a
 ./configure --enable-tls13 --enable-tlsv10 --enable-oldtls --enable-dtls \
             --enable-dtls-mtu --enable-hc128 --enable-rabbit \
             --enable-aesccm --enable-opensslall --enable-keygen \
-            --enable-sp-math-all && \
+            --enable-sp-math-all CFLAGS=-DWOLFSSL_PUBLIC_MP && \
 make && make install
 ```
 
