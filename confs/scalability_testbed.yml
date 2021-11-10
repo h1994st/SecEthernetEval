@@ -1,0 +1,21 @@
+version: '2.4'
+
+services:
+  alice:
+    image: h1994st/sec_eval
+    privileged: true
+    tty: true
+    networks:
+      - testnet
+    volumes:
+      - .:/code
+      - /var/run/dbus:/var/run/dbus
+    cpus: '0.01'
+    mem_limit: '50MB'
+
+networks:
+  testnet:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.50.1.0/24
