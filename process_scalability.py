@@ -10,6 +10,27 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
+def plot_cdf(latency):
+    # H, X1 = np.histogram(latency, bins=10, normed=True)
+    # dx = X1[1] - X1[0]
+    # F1 = np.cumsum(H)*dx
+
+    N = len(latency)
+    X2 = np.sort(latency)
+    F2 = np.array(range(N))/float(N)
+
+    plt.rcParams.update({'font.size': 12})
+
+    # plt.plot(X1[1:], F1)
+    plt.plot(X2, F2)
+
+    plt.xlabel('Latency (ms)')
+    plt.grid(True, axis='x', linestyle='--')
+    plt.tight_layout()
+
+    plt.show()
+
+
 def plot_latency(no_protection_latency, protection_latency):
     n = len(no_protection_latency)
     x = np.arange(1, n + 1)
@@ -84,6 +105,9 @@ def process_data(data_dir, num_sender, num_receiver):
 
 def main(data_dir, num_sender, num_receiver):
     latencies = process_data(data_dir, num_sender, num_receiver)
+
+    for latency in latencies:
+        plot_cdf(latency)
 
     # plot_latency(no_protection_latency, protection_latency)
 
