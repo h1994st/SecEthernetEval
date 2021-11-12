@@ -49,6 +49,8 @@ def process_data(data_dir, num_sender, num_receiver):
     send_data = []
     with open(send_data_path, 'r') as fp:
         for line in fp:
+            if line.strip() == '^C':
+                continue
             send_data.append(float(line.strip().split(': ')[0]))
     send_data = np.array(send_data) * 1000
 
