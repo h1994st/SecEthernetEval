@@ -65,12 +65,13 @@ def process_data(data_dir, num_sender, num_receiver):
         recv_data = []
         with open(recv_data_path, 'r') as fp:
             for line in fp:
+                if line.strip() == '^C':
+                    continue
                 recv_data.append(float(line.strip().split(': ')[0]))
         recv_data = np.array(recv_data) * 1000
 
         latencies.append(recv_data[:1000] - send_data[:1000])
 
-        print(data_dir)
         print("Latency %d (ms): %f (avg), %f (std dev)" % (
             i, np.mean(latencies[-1]), np.std(latencies[-1])))
         print("  - min: %f, max: %f" % (
