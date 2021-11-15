@@ -55,12 +55,15 @@ def plot_cdf(protection_latency):
     plt.show()
 
 
-def process_data(data_dir):
+def process_data(data_dir, recv_i):
     send_data_path = os.path.join(data_dir, 'send.txt')
     if not os.path.exists(send_data_path):
         return []
 
-    recv_data_path = os.path.join(data_dir, 'recv.txt')
+    recv_filename = 'recv.txt'
+    if recv_i > 0:
+        recv_filename = 'recv%d.txt' % recv_i
+    recv_data_path = os.path.join(data_dir, recv_filename)
     if not os.path.exists(recv_data_path):
         return []
 
@@ -69,6 +72,9 @@ def process_data(data_dir):
     with open(send_data_path, 'r') as fp:
         for line in fp:
             items = line.strip().split(': ')
+            if len(items) == 1:
+                # no data
+                continue
             send_data[int(items[1])] = float(items[0])
 
     # Load recv.txt
@@ -121,8 +127,8 @@ def process_data(data_dir):
     return latency
 
 
-def main(protection_data_dir):
-    protection_latency = process_data(protection_data_dir)
+def main(protection_data_dir, recv_i):
+    protection_latency = process_data(protection_data_dir, recv_i)
 
     plot_cdf(protection_latency)
     # plot_latency(protection_latency)
@@ -133,4 +139,7 @@ if __name__ == '__main__':
         print('Insufficient arguments!')
         sys.exit(1)
     protection_data_dir = sys.argv[1]
-    main(protection_data_dir)
+    recv_i = 0
+    if len(sys.argv) == 3:
+        recv_i = int(sys.argv[2])
+    main(protection_data_dir, recv_i)

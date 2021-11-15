@@ -90,6 +90,10 @@ def process_data(data_dir, num_sender, num_receiver):
             for line in fp:
                 if line.strip() == '^C':
                     continue
+                if line.strip() == 'no corresponding packet in the map!':
+                    continue
+                if line.strip() == 'double free or corruption (!prev)':
+                    continue
                 recv_data.append(float(line.strip().split(': ')[0]))
         recv_data = np.array(recv_data) * 1000
 
