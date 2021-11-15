@@ -3,7 +3,7 @@ version: '2.4'
 services:
   alice:
     hostname: alice
-    image: h1994st/sec_eval:0.5
+    image: h1994st/sec_eval
     privileged: true
     tty: true
     environment:
@@ -20,7 +20,7 @@ services:
     mac_address: 02:42:ac:11:00:02
   bob:
     hostname: bob
-    image: h1994st/sec_eval:0.5
+    image: h1994st/sec_eval
     privileged: true
     tty: true
     environment:

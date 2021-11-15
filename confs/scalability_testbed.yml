@@ -2,7 +2,7 @@ version: '2.4'
 
 services:
   alice:
-    image: h1994st/sec_eval:0.5
+    image: h1994st/sec_eval
     privileged: true
     tty: true
     networks:
