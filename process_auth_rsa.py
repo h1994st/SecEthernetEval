@@ -59,55 +59,52 @@ def plot_latency(no_protection_latency, protection_latency):
     # plt.savefig('throughput_figure.png')
 
 
-def process_data(data_dir, num_sender, num_receiver):
+def process_data(data_dir):
     # Load send.txt
-    print("[+] Load send.txt")
-    send_data_path = os.path.join(data_dir, 'send.txt')
-    if not os.path.exists(send_data_path):
-        print("No sender data!")
+    print("[+] Load auth.txt")
+    auth_data_path = os.path.join(data_dir, 'auth.txt')
+    if not os.path.exists(auth_data_path):
+        print("No authenticator data!")
         return []
 
-    send_data = []
-    with open(send_data_path, 'r') as fp:
-        for line in fp:
-            if line.strip() == '^C':
-                continue
-            send_data.append(float(line.strip().split(': ')[0]))
-    send_data = np.array(send_data) * 1000
+    auth_data = []
+    start_txt = " mitm_auth: before crypto_akcipher_sign"
+    end_txt = " mitm_auth: crypto_akcipher_sign ret: 0"
+    with open(auth_data_path, 'r') as fp:
+        lines = fp.readlines()
 
-    # Load recv*.txt for each receiver
-    print("[+] Load recv*.txt for each receiver")
-    latencies = []
-    for i in range(1, num_receiver + 1):
-        recv_data_path = os.path.join(data_dir, f'recv{i}.txt')
-        if not os.path.exists(recv_data_path):
-            latencies.append([])
+    i = 0
+    while i < len(lines):
+        line = lines[i]
+        i += 1
+        if line.strip() == '^C':
+            continue
+        if start_txt not in line:
             continue
 
-        # Load recv.txt
-        recv_data = []
-        with open(recv_data_path, 'r') as fp:
-            for line in fp:
-                if line.strip() == '^C':
-                    continue
-                recv_data.append(float(line.strip().split(': ')[0]))
-        recv_data = np.array(recv_data) * 1000
+        # Found the start line
+        next_line = lines[i]
+        start_ts = float(line.strip().split("] ")[0][1:])
+        end_ts = float(next_line.strip().split("] ")[0][1:])
 
-        latencies.append(recv_data[:1000] - send_data[:1000])
+        auth_data.append(end_ts - start_ts)
 
-        print("Latency %d (ms): %f (avg), %f (std dev)" % (
-            i, np.mean(latencies[-1]), np.std(latencies[-1])))
-        print("  - min: %f, max: %f" % (
-            np.min(latencies[-1]), np.max(latencies[-1])))
+        # Skip one more line
+        i += 1
+    auth_data = np.array(auth_data) * 1000
 
-    return latencies
+    print("Latency (ms): %f (avg), %f (std dev)" % (
+        np.mean(auth_data[-1]), np.std(auth_data[-1])))
+    print("  - min: %f, max: %f" % (
+        np.min(auth_data[-1]), np.max(auth_data[-1])))
+
+    return auth_data
 
 
-def main(data_dir, num_sender, num_receiver):
-    latencies = process_data(data_dir, num_sender, num_receiver)
+def main(data_dir):
+    latency = process_data(data_dir)
 
-    for latency in latencies:
-        plot_cdf(latency)
+    plot_cdf(latency)
 
     # plot_latency(no_protection_latency, protection_latency)
 
@@ -136,4 +133,4 @@ if __name__ == '__main__':
 
     print(f"Data dir: {data_dir}")
 
-    main(data_dir, num_sender, num_receiver)
+    main(data_dir)

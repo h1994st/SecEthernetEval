@@ -1,5 +1,7 @@
 # Scalability Evaluation
 
+## CAN or LiDAR
+
 ```bash
 # num: the total number of containers in the network
 ./scripts/host_start_scalability_testbed.sh 2  # s1r1
@@ -48,4 +50,54 @@ docker-compose exec --index=32 -w /code -- alice /code/udp_server > ./results/sc
 docker-compose exec --index=33 -w /code -- alice /code/udp_server > ./results/scalability/20211111_1/s1r32/can_base/recv32.txt
 
 ./scripts/host_stop_scalability_testbed.sh
+```
+
+## CAN w/ Gatekeeper RSA
+
+```bash
+docker-compose exec -u root --index=1 -w /code -- alice /code/udp_client_raw -b -i eth0 /code/data/can_frames.pcap > ./results/scalability/20211111_1/s1r2/can_gatekeeper_rsa/send.txt
+docker-compose exec  -u root --index=2 -w /code -- alice /code/udp_server_rsa_raw > ./results/scalability/20211111_1/s1r2/can_gatekeeper_rsa/recv1.txt
+docker-compose exec  -u root --index=3 -w /code -- alice /code/udp_server_rsa_raw > ./results/scalability/20211111_1/s1r2/can_gatekeeper_rsa/recv2.txt
+
+docker-compose exec  -u root --index=4 -w /code -- alice /code/udp_server_rsa_raw > ./results/scalability/20211111_1/s1r4/can_gatekeeper_rsa/recv3.txt
+docker-compose exec  -u root --index=5 -w /code -- alice /code/udp_server_rsa_raw > ./results/scalability/20211111_1/s1r4/can_gatekeeper_rsa/recv4.txt
+
+docker-compose exec  -u root --index=6 -w /code -- alice /code/udp_server_rsa_raw > ./results/scalability/20211111_1/s1r8/can_gatekeeper_rsa/recv5.txt
+docker-compose exec  -u root --index=7 -w /code -- alice /code/udp_server_rsa_raw > ./results/scalability/20211111_1/s1r8/can_gatekeeper_rsa/recv6.txt
+docker-compose exec  -u root --index=8 -w /code -- alice /code/udp_server_rsa_raw > ./results/scalability/20211111_1/s1r8/can_gatekeeper_rsa/recv7.txt
+docker-compose exec  -u root --index=9 -w /code -- alice /code/udp_server_rsa_raw > ./results/scalability/20211111_1/s1r8/can_gatekeeper_rsa/recv8.txt
+
+docker-compose exec  -u root --index=10 -w /code -- alice /code/udp_server_rsa_raw > ./results/scalability/20211111_1/s1r16/can_gatekeeper_rsa/recv9.txt
+docker-compose exec  -u root --index=11 -w /code -- alice /code/udp_server_rsa_raw > ./results/scalability/20211111_1/s1r16/can_gatekeeper_rsa/recv10.txt
+docker-compose exec  -u root --index=12 -w /code -- alice /code/udp_server_rsa_raw > ./results/scalability/20211111_1/s1r16/can_gatekeeper_rsa/recv11.txt
+docker-compose exec  -u root --index=13 -w /code -- alice /code/udp_server_rsa_raw > ./results/scalability/20211111_1/s1r16/can_gatekeeper_rsa/recv12.txt
+docker-compose exec  -u root --index=14 -w /code -- alice /code/udp_server_rsa_raw > ./results/scalability/20211111_1/s1r16/can_gatekeeper_rsa/recv13.txt
+docker-compose exec  -u root --index=15 -w /code -- alice /code/udp_server_rsa_raw > ./results/scalability/20211111_1/s1r16/can_gatekeeper_rsa/recv14.txt
+docker-compose exec  -u root --index=16 -w /code -- alice /code/udp_server_rsa_raw > ./results/scalability/20211111_1/s1r16/can_gatekeeper_rsa/recv15.txt
+docker-compose exec  -u root --index=17 -w /code -- alice /code/udp_server_rsa_raw > ./results/scalability/20211111_1/s1r16/can_gatekeeper_rsa/recv16.txt
+```
+
+## LiDAR w/ Gatekeeper RSA
+
+```bash
+docker-compose exec -u root --index=1 -w /code -- alice /code/lidar_udp_client_raw -b -i eth0 /code/data/lidar_pcaps/HDL32-V2_Tunnel.pcap > ./results/scalability/20211111_1/s1r2/lidar_gatekeeper_rsa/send.txt
+docker-compose exec  -u root --index=2 -w /code -- alice /code/lidar_udp_server_rsa_raw > ./results/scalability/20211111_1/s1r2/lidar_gatekeeper_rsa/recv1.txt
+docker-compose exec  -u root --index=3 -w /code -- alice /code/lidar_udp_server_rsa_raw > ./results/scalability/20211111_1/s1r2/lidar_gatekeeper_rsa/recv2.txt
+
+docker-compose exec  -u root --index=4 -w /code -- alice /code/lidar_udp_server_rsa_raw > ./results/scalability/20211111_1/s1r4/lidar_gatekeeper_rsa/recv3.txt
+docker-compose exec  -u root --index=5 -w /code -- alice /code/lidar_udp_server_rsa_raw > ./results/scalability/20211111_1/s1r4/lidar_gatekeeper_rsa/recv4.txt
+
+docker-compose exec  -u root --index=6 -w /code -- alice /code/lidar_udp_server_rsa_raw > ./results/scalability/20211111_1/s1r8/lidar_gatekeeper_rsa/recv5.txt
+docker-compose exec  -u root --index=7 -w /code -- alice /code/lidar_udp_server_rsa_raw > ./results/scalability/20211111_1/s1r8/lidar_gatekeeper_rsa/recv6.txt
+docker-compose exec  -u root --index=8 -w /code -- alice /code/lidar_udp_server_rsa_raw > ./results/scalability/20211111_1/s1r8/lidar_gatekeeper_rsa/recv7.txt
+docker-compose exec  -u root --index=9 -w /code -- alice /code/lidar_udp_server_rsa_raw > ./results/scalability/20211111_1/s1r8/lidar_gatekeeper_rsa/recv8.txt
+
+docker-compose exec  -u root --index=10 -w /code -- alice /code/lidar_udp_server_rsa_raw > ./results/scalability/20211111_1/s1r16/lidar_gatekeeper_rsa/recv9.txt
+docker-compose exec  -u root --index=11 -w /code -- alice /code/lidar_udp_server_rsa_raw > ./results/scalability/20211111_1/s1r16/lidar_gatekeeper_rsa/recv10.txt
+docker-compose exec  -u root --index=12 -w /code -- alice /code/lidar_udp_server_rsa_raw > ./results/scalability/20211111_1/s1r16/lidar_gatekeeper_rsa/recv11.txt
+docker-compose exec  -u root --index=13 -w /code -- alice /code/lidar_udp_server_rsa_raw > ./results/scalability/20211111_1/s1r16/lidar_gatekeeper_rsa/recv12.txt
+docker-compose exec  -u root --index=14 -w /code -- alice /code/lidar_udp_server_rsa_raw > ./results/scalability/20211111_1/s1r16/lidar_gatekeeper_rsa/recv13.txt
+docker-compose exec  -u root --index=15 -w /code -- alice /code/lidar_udp_server_rsa_raw > ./results/scalability/20211111_1/s1r16/lidar_gatekeeper_rsa/recv14.txt
+docker-compose exec  -u root --index=16 -w /code -- alice /code/lidar_udp_server_rsa_raw > ./results/scalability/20211111_1/s1r16/lidar_gatekeeper_rsa/recv15.txt
+docker-compose exec  -u root --index=17 -w /code -- alice /code/lidar_udp_server_rsa_raw > ./results/scalability/20211111_1/s1r16/lidar_gatekeeper_rsa/recv16.txt
 ```
