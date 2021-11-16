@@ -7,7 +7,7 @@ echo "[+] Start Docker containers for $NUM ECUs"
 docker-compose -f scalability_testbed.yml up -d --scale alice=$NUM
 
 # Set up the authenticator Docker
-echo "[+] Start Docker containers for $NUM ECUs"
+echo "[+] Start Authenticator container"
 docker run -it -d \
     --network none \
     --name=authenticator --hostname=authenticator \
