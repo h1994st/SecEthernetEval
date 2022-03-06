@@ -12,6 +12,7 @@ udp_client
 udp_server
 
 udp_client_raw
+udp_client_solver_raw
 udp_server_raw
 udp_server_rsa_raw
 
